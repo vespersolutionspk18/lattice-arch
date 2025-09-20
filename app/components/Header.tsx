@@ -1,8 +1,9 @@
 'use client'
 
-import React from 'react'
-import { motion, Variants } from 'motion/react'
+import React, { useState } from 'react'
+import { motion, Variants, AnimatePresence } from 'motion/react'
 import Button from './Button'
+import { HiMenuAlt3, HiX } from 'react-icons/hi'
 
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: -20 },
@@ -43,6 +44,8 @@ const navItemVariants: Variants = {
 }
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   return (
     <motion.div 
       className="px-4 w-full bg-black"
@@ -50,16 +53,18 @@ const Header = () => {
       animate="visible"
       variants={containerVariants}
     >
-      <div className="flex flex-row px-5 py-3 items-center   justify-between">
+      <div className="flex flex-row px-2 md:px-5 py-3 items-center justify-between">
         <motion.div 
-          className="font-light text-3xl w-[20%] text-white"
+          className="font-light text-2xl md:text-3xl text-white"
           variants={itemVariants}
           whileHover={{ scale: 1.05 }}
         >
             Lattice
         </motion.div>
+        
+        {/* Desktop Navigation */}
         <motion.div 
-          className="flex flex-row gap-8 text-white text-xl font-light"
+          className="hidden md:flex flex-row gap-4 lg:gap-8 text-white text-lg lg:text-xl font-light"
           variants={containerVariants}
         >
             {['Home', 'Services', 'About', 'Projects'].map((item) => (
@@ -78,19 +83,67 @@ const Header = () => {
               </motion.p>
             ))}
         </motion.div>
-       <motion.div 
-         className="w-[20%] flex flex-row justify-end"
-         variants={itemVariants}
-       >
-         <motion.div
-           whileHover={{ scale: 1.05 }}
-           whileTap={{ scale: 0.95 }}
-         >
-           <Button variant='white' route='/contact'>Book A Meeting</Button>
-         </motion.div>
-       </motion.div>
-       
+        
+        {/* Desktop Button */}
+        <motion.div 
+          className="hidden md:flex flex-row justify-end"
+          variants={itemVariants}
+        >
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Button variant='white' route='/contact'>Book A Meeting</Button>
+          </motion.div>
+        </motion.div>
+
+        {/* Mobile Menu Button */}
+        <motion.button
+          className="md:hidden text-white text-2xl z-50"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          variants={itemVariants}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {isMenuOpen ? <HiX /> : <HiMenuAlt3 />}
+        </motion.button>
       </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="md:hidden fixed top-0 left-0 w-full h-screen bg-black z-40"
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'tween', duration: 0.3 }}
+          >
+            <div className="flex flex-col gap-6 px-6 pt-20">
+              {['Home', 'Services', 'About', 'Projects'].map((item, index) => (
+                <motion.p
+                  key={item}
+                  className="text-white text-2xl font-light"
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  onClick={() => setIsMenuOpen(false)}
+                  style={{ cursor: 'pointer' }}
+                >
+                  {item}
+                </motion.p>
+              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+              >
+                <Button variant='white' route='/contact'>Book A Meeting</Button>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   )
 }

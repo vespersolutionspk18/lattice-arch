@@ -66,14 +66,14 @@ const Footer = () => {
       viewport={{ once: true, amount: 0.1 }}
       variants={containerVariants}
     >
-      <div className="lg:px-16 px-5 pt-12 pb-6">
+      <div className="px-4 md:px-8 lg:px-16 pt-8 md:pt-10 lg:pt-12 pb-4 md:pb-5 lg:pb-6">
         <motion.div 
-          className="flex flex-col lg:flex-row justify-between gap-12"
+          className="flex flex-col lg:flex-row justify-between gap-8 md:gap-10 lg:gap-12"
           variants={containerVariants}
         >
           {/* Left side - Logo and Contact */}
           <motion.div 
-            className="flex flex-col gap-6 lg:w-1/3"
+            className="flex flex-col gap-4 md:gap-5 lg:gap-6 w-full lg:w-1/3"
             variants={itemVariants}
           >
             <motion.div 
@@ -85,11 +85,11 @@ const Footer = () => {
                 whileHover={{ rotate: 180 }}
                 transition={{ duration: 0.5 }}
               />
-              <span className="text-2xl font-semibold text-white">Lattice Arch</span>
+              <span className="text-xl md:text-2xl font-semibold text-white">Lattice Arch</span>
             </motion.div>
             
             <motion.div 
-              className="flex flex-col gap-4 text-stone-400"
+              className="flex flex-col gap-3 md:gap-4 text-stone-400 text-sm md:text-base"
               variants={containerVariants}
             >
               <motion.a 
@@ -98,7 +98,7 @@ const Footer = () => {
                 variants={linkVariants}
                 whileHover={{ x: 5 }}
               >
-                <Mail size={20} />
+                <Mail size={18} />
                 <span>info@latticearch.com</span>
               </motion.a>
               <motion.a 
@@ -107,14 +107,14 @@ const Footer = () => {
                 variants={linkVariants}
                 whileHover={{ x: 5 }}
               >
-                <Phone size={20} />
+                <Phone size={18} />
                 <span>+1 (234) 567-8900</span>
               </motion.a>
               <motion.div 
                 className="flex items-start gap-3"
                 variants={linkVariants}
               >
-                <MapPin size={20} className="mt-1" />
+                <MapPin size={18} className="mt-1" />
                 <span>123 Architecture Lane<br />Design District, NY 10001</span>
               </motion.div>
             </motion.div>
@@ -122,16 +122,16 @@ const Footer = () => {
           
           {/* Right side - Links */}
           <motion.div 
-            className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:w-2/3"
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-7 lg:gap-8 w-full lg:w-2/3"
             variants={containerVariants}
           >
             <motion.div 
-              className="flex flex-col gap-4"
+              className="flex flex-col gap-3 md:gap-4"
               variants={linkColumnVariants}
             >
-              <h3 className="text-white font-medium text-lg">Services</h3>
+              <h3 className="text-white font-medium text-base md:text-lg">Services</h3>
               <motion.div 
-                className="flex flex-col gap-3 text-stone-400"
+                className="flex flex-col gap-2 md:gap-3 text-stone-400 text-sm md:text-base"
                 variants={containerVariants}
               >
                 {['Layout Design', '3D Rendering', 'AI Remodeller', 'CRM Solutions'].map((item, index) => (
@@ -148,12 +148,12 @@ const Footer = () => {
             </motion.div>
             
             <motion.div 
-              className="flex flex-col gap-4"
+              className="flex flex-col gap-3 md:gap-4"
               variants={linkColumnVariants}
             >
-              <h3 className="text-white font-medium text-lg">Company</h3>
+              <h3 className="text-white font-medium text-base md:text-lg">Company</h3>
               <motion.div 
-                className="flex flex-col gap-3 text-stone-400"
+                className="flex flex-col gap-2 md:gap-3 text-stone-400 text-sm md:text-base"
                 variants={containerVariants}
               >
                 {['About Us', 'Portfolio', 'Testimonials', 'Careers'].map((item) => (
@@ -170,12 +170,12 @@ const Footer = () => {
             </motion.div>
             
             <motion.div 
-              className="flex flex-col gap-4"
+              className="flex flex-col gap-3 md:gap-4"
               variants={linkColumnVariants}
             >
-              <h3 className="text-white font-medium text-lg">Resources</h3>
+              <h3 className="text-white font-medium text-base md:text-lg">Resources</h3>
               <motion.div 
-                className="flex flex-col gap-3 text-stone-400"
+                className="flex flex-col gap-2 md:gap-3 text-stone-400 text-sm md:text-base"
                 variants={containerVariants}
               >
                 {['Showroom', 'Materials', 'Blog', 'FAQ'].map((item) => (
@@ -192,12 +192,12 @@ const Footer = () => {
             </motion.div>
             
             <motion.div 
-              className="flex flex-col gap-4"
+              className="flex flex-col gap-3 md:gap-4"
               variants={linkColumnVariants}
             >
-              <h3 className="text-white font-medium text-lg">Legal</h3>
+              <h3 className="text-white font-medium text-base md:text-lg">Legal</h3>
               <motion.div 
-                className="flex flex-col gap-3 text-stone-400"
+                className="flex flex-col gap-2 md:gap-3 text-stone-400 text-sm md:text-base"
                 variants={containerVariants}
               >
                 {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
@@ -217,11 +217,11 @@ const Footer = () => {
         
         {/* Bottom - Copyright */}
         <motion.div 
-          className="mt-8 pt-4 border-t border-stone-800"
+          className="mt-6 md:mt-7 lg:mt-8 pt-3 md:pt-4 border-t border-stone-800"
           variants={itemVariants}
         >
           <motion.div 
-            className="flex flex-col lg:flex-row justify-between items-center gap-4 text-stone-500 text-sm"
+            className="flex flex-col md:flex-row justify-between items-center gap-2 md:gap-3 lg:gap-4 text-stone-500 text-xs md:text-sm text-center md:text-left"
             variants={containerVariants}
           >
             <motion.p variants={linkVariants}>© {new Date().getFullYear()} Lattice Arch. All rights reserved.</motion.p>

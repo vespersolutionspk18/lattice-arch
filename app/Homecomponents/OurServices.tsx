@@ -105,21 +105,21 @@ const OurServices = () => {
   ];
   return (
    <motion.div 
-    className="flex flex-col justify-between lg:gap-10 gap-5 w-full lg:px-16 px-5 lg:py-16 py-10 items-center"
+    className="flex flex-col justify-between gap-4 md:gap-6 lg:gap-10 w-full px-4 md:px-8 lg:px-16 py-8 md:py-12 lg:py-16 items-center"
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true, amount: 0.1 }}
     variants={containerVariants}
    >
       <motion.div 
-        className="w-fit rounded-full bg-stone-900 flex items-center justify-center px-4 py-2 text-lg text-white/85"
+        className="w-fit rounded-full bg-stone-900 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base lg:text-lg text-white/85"
         variants={itemVariants}
         whileHover={{ scale: 1.05 }}
       >
         Our Services
       </motion.div>
       <motion.h5 
-        className="text-center text-5xl text-white/85 font-semibold tracking-tighter w-[66%]"
+        className="text-center text-2xl md:text-3xl lg:text-5xl text-white/85 font-semibold tracking-tighter w-full md:w-[80%] lg:w-[66%]"
         variants={itemVariants}
       >
         Comprehensive architectural solutions from concept to completion. 
@@ -128,16 +128,16 @@ const OurServices = () => {
       </motion.h5>
       <motion.div 
         id="services here" 
-        className="flex flex-col gap-7 w-full"
+        className="flex flex-col gap-4 md:gap-6 lg:gap-7 w-full"
         variants={containerVariants}
       >
-        <motion.div className="flex flex-row w-full gap-7">
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-4 md:gap-6 lg:gap-7">
           {services.slice(0, 3).map((service, index) => {
             const Icon = service.icon;
             return (
               <motion.div
                 key={service.title}
-                className="relative flex flex-col gap-10 p-7 rounded-4xl bg-stone-900 border-[1px] border-stone-800 w-1/3 overflow-hidden group"
+                className="relative flex flex-col gap-4 md:gap-6 lg:gap-10 p-4 md:p-6 lg:p-7 rounded-2xl md:rounded-3xl lg:rounded-4xl bg-stone-900 border-[1px] border-stone-800 w-full overflow-hidden group"
                 custom={index}
                 variants={cardVariants}
                 whileHover={{ 
@@ -167,7 +167,7 @@ const OurServices = () => {
                   <Icon className="text-white text-3xl" />
                 </motion.div>
                 <motion.h5 
-                  className="text-3xl text-white/90 font-light tracking-tighter"
+                  className="text-xl md:text-2xl lg:text-3xl text-white/90 font-light tracking-tighter"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.5 + index * 0.1 }}
@@ -175,7 +175,7 @@ const OurServices = () => {
                   {service.title}
                 </motion.h5>
                 <motion.p 
-                  className="text-xl text-stone-400"
+                  className="text-sm md:text-base lg:text-xl text-stone-400"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.6 + index * 0.1 }}
@@ -192,13 +192,13 @@ const OurServices = () => {
             );
           })}
         </motion.div>
-        <motion.div className="flex flex-row w-full gap-7">
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full gap-4 md:gap-6 lg:gap-7">
           {services.slice(3, 6).map((service, index) => {
             const Icon = service.icon;
             return (
               <motion.div
                 key={service.title}
-                className="relative flex flex-col gap-10 p-7 rounded-4xl bg-stone-900 border-[1px] border-stone-800 w-1/3 overflow-hidden group"
+                className="relative flex flex-col gap-4 md:gap-6 lg:gap-10 p-4 md:p-6 lg:p-7 rounded-2xl md:rounded-3xl lg:rounded-4xl bg-stone-900 border-[1px] border-stone-800 w-full overflow-hidden group"
                 custom={index + 3}
                 variants={cardVariants}
                 whileHover={{ 
@@ -228,7 +228,7 @@ const OurServices = () => {
                   <Icon className="text-white text-3xl" />
                 </motion.div>
                 <motion.h5 
-                  className="text-3xl text-white/90 font-light tracking-tighter"
+                  className="text-xl md:text-2xl lg:text-3xl text-white/90 font-light tracking-tighter"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.8 + index * 0.1 }}
@@ -236,7 +236,7 @@ const OurServices = () => {
                   {service.title}
                 </motion.h5>
                 <motion.p 
-                  className="text-xl text-stone-400"
+                  className="text-sm md:text-base lg:text-xl text-stone-400"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.9 + index * 0.1 }}

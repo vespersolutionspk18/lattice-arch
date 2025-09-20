@@ -56,17 +56,17 @@ const FaqItem = ({ question, answer, isOpen, onClick, index }: { question: strin
     >
       <motion.button
         onClick={onClick}
-        className="w-full py-6 flex justify-between items-center text-left hover:text-white transition-colors"
+        className="w-full py-4 md:py-5 lg:py-6 flex justify-between items-center text-left hover:text-white transition-colors"
         whileTap={{ scale: 0.98 }}
       >
-        <h3 className="text-xl text-white/85 font-light pr-8">{question}</h3>
+        <h3 className="text-base md:text-lg lg:text-xl text-white/85 font-light pr-4 md:pr-6 lg:pr-8">{question}</h3>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
         >
           <ChevronDown 
             className="text-white/60 flex-shrink-0"
-            size={24} 
+            size={20} 
           />
         </motion.div>
       </motion.button>
@@ -83,7 +83,7 @@ const FaqItem = ({ question, answer, isOpen, onClick, index }: { question: strin
             className="overflow-hidden"
           >
             <motion.p 
-              className="text-lg text-stone-400 leading-relaxed pb-6"
+              className="text-sm md:text-base lg:text-lg text-stone-400 leading-relaxed pb-4 md:pb-5 lg:pb-6"
               initial={{ y: -20 }}
               animate={{ y: 0 }}
               transition={{ delay: 0.1 }}
@@ -126,27 +126,27 @@ const Faq = () => {
 
   return (
     <motion.div 
-      className="flex flex-col justify-between lg:gap-10 gap-5 w-full lg:px-16 px-5 lg:py-16 py-10 items-center"
+      className="flex flex-col justify-between gap-4 md:gap-6 lg:gap-10 w-full px-4 md:px-8 lg:px-16 py-8 md:py-12 lg:py-16 items-center"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={containerVariants}
     >
       <motion.div 
-        className="w-fit rounded-full bg-stone-900 flex items-center justify-center px-4 py-2 text-lg text-white/85"
+        className="w-fit rounded-full bg-stone-900 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base lg:text-lg text-white/85"
         variants={titleVariants}
         whileHover={{ scale: 1.05 }}
       >
         Frequently Asked Questions
       </motion.div>
       <motion.h5 
-        className="text-center text-5xl text-white/85 font-semibold tracking-tighter lg:w-[66%] w-full"
+        className="text-center text-2xl md:text-3xl lg:text-5xl text-white/85 font-semibold tracking-tighter w-full md:w-[80%] lg:w-[66%]"
         variants={titleVariants}
       >
         Everything you need to know about our architectural services and process
       </motion.h5>
       <motion.div 
-        className="lg:w-[66%] w-full mt-8"
+        className="w-full md:w-[85%] lg:w-[66%] mt-4 md:mt-6 lg:mt-8"
         variants={containerVariants}
       >
         {faqs.map((faq, index) => (

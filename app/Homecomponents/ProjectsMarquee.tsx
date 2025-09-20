@@ -46,7 +46,7 @@ const ProjectsMarquee = () => {
 
   return (
     <motion.div 
-      className="w-full overflow-hidden mt-20 py-8"
+      className="w-full overflow-hidden mt-8 md:mt-12 lg:mt-20 py-4 md:py-6 lg:py-8"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
@@ -54,7 +54,7 @@ const ProjectsMarquee = () => {
     >
       <div className="relative flex">
         <motion.div 
-          className="animate-marquee flex items-end gap-8 pr-6"
+          className="animate-marquee flex items-end gap-4 md:gap-6 lg:gap-8 pr-3 md:pr-4 lg:pr-6"
           initial={{ x: 0 }}
           animate={{ x: "-50%" }}
           transition={{
@@ -67,7 +67,7 @@ const ProjectsMarquee = () => {
             index % 2 === 0 ? (
               <motion.div
                 key={`first-${index}`}
-                className="relative flex-shrink-0 h-100 w-80 rounded-b-xl overflow-hidden group"
+                className="relative flex-shrink-0 h-48 w-40 md:h-64 md:w-56 lg:h-100 lg:w-80 rounded-b-lg md:rounded-b-xl overflow-hidden group"
                 custom={index}
                 variants={cardVariants}
                 whileHover={{ 
@@ -92,7 +92,7 @@ const ProjectsMarquee = () => {
             ) : (
               <motion.div
                 key={`first-${index}`}
-                className="relative flex-shrink-0 h-64 w-106 rounded-xl overflow-hidden bg-gray-200 group"
+                className="relative flex-shrink-0 h-32 w-52 md:h-48 md:w-80 lg:h-64 lg:w-106 rounded-lg md:rounded-xl overflow-hidden bg-gray-200 group"
                 custom={index}
                 variants={cardVariants}
                 whileHover={{ 
@@ -113,7 +113,7 @@ const ProjectsMarquee = () => {
           ))}
         </motion.div>
         <motion.div 
-          className="absolute top-0 flex items-end gap-8 pr-6"
+          className="absolute top-0 flex items-end gap-4 md:gap-6 lg:gap-8 pr-3 md:pr-4 lg:pr-6"
           initial={{ x: 0 }}
           animate={{ x: "-50%" }}
           transition={{
@@ -126,7 +126,7 @@ const ProjectsMarquee = () => {
             index % 2 === 0 ? (
               <motion.div
                 key={`second-${index}`}
-                className="relative flex-shrink-0 h-100 w-80 rounded-b-xl overflow-hidden group"
+                className="relative flex-shrink-0 h-48 w-40 md:h-64 md:w-56 lg:h-100 lg:w-80 rounded-b-lg md:rounded-b-xl overflow-hidden group"
                 custom={index}
                 variants={cardVariants}
                 whileHover={{ 
@@ -151,7 +151,7 @@ const ProjectsMarquee = () => {
             ) : (
               <motion.div
                 key={`second-${index}`}
-                className="relative flex-shrink-0 h-64 w-106 rounded-xl overflow-hidden bg-gray-200 group"
+                className="relative flex-shrink-0 h-32 w-52 md:h-48 md:w-80 lg:h-64 lg:w-106 rounded-lg md:rounded-xl overflow-hidden bg-gray-200 group"
                 custom={index}
                 variants={cardVariants}
                 whileHover={{ 

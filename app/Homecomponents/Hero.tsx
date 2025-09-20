@@ -68,17 +68,17 @@ const pillVariants: Variants = {
 const Hero = () => {
   return (
     <motion.div 
-      className="flex flex-col justify-between lg:flex-row lg:gap-10 gap-5 w-full lg:p-16 p-5 mt-16"
+      className="flex flex-col justify-between lg:flex-row gap-5 lg:gap-10 w-full p-4 md:p-8 lg:p-16 mt-8 md:mt-12 lg:mt-16"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
     >
       <motion.div 
-        className="lg:w-[40%] w-full flex flex-col gap-10 justify-between"
+        className="w-full lg:w-[40%] flex flex-col gap-4 md:gap-6 lg:gap-10 justify-between"
         variants={containerVariants}
       >
         <motion.div 
-          className="w-fit rounded-full bg-stone-900 flex items-center justify-center px-4 py-2 text-lg text-white"
+          className="w-fit rounded-full bg-stone-900 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base lg:text-lg text-white"
           variants={itemVariants}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -86,7 +86,7 @@ const Hero = () => {
             #1 in Smart, Stylish Spaces
         </motion.div>
         <motion.h1 
-          className="text-7xl"
+          className="text-3xl md:text-5xl lg:text-7xl"
           variants={itemVariants}
         >
             Crafting Spaces That Match <motion.span 
@@ -97,13 +97,13 @@ const Hero = () => {
             >Your Style</motion.span> and Needs
         </motion.h1>
         <motion.p 
-          className="text-2xl text-stone-400"
+          className="text-base md:text-xl lg:text-2xl text-stone-400"
           variants={itemVariants}
         >
             Building new or upgrading? We craft stylish, inspiring spaces that feel uniquely yours.
         </motion.p>
         <motion.div 
-          className="flex flex-row gap-5"
+          className="flex flex-col sm:flex-row gap-3 md:gap-4 lg:gap-5"
           variants={containerVariants}
         >
           <motion.div 
@@ -125,8 +125,8 @@ const Hero = () => {
           className="w-full relative"
           variants={itemVariants}
         >
-            <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute left-0 top-0 w-16 md:w-24 lg:w-32 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 w-16 md:w-24 lg:w-32 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
             <Marquee
               direction="right"
               speed={30}
@@ -134,7 +134,7 @@ const Hero = () => {
               className="overflow-y-hidden"
             >
               <motion.div 
-                className="flex items-center gap-20 py-4 mr-20"
+                className="flex items-center gap-10 md:gap-16 lg:gap-20 py-2 md:py-3 lg:py-4 mr-10 md:mr-16 lg:mr-20"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5, duration: 1 }}
@@ -146,7 +146,7 @@ const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.8 + i * 0.1 }}
                   >
-                    <Icon className="text-4xl text-stone-500" />
+                    <Icon className="text-2xl md:text-3xl lg:text-4xl text-stone-500" />
                   </motion.div>
                 ))}
               </motion.div>
@@ -154,7 +154,7 @@ const Hero = () => {
         </motion.div>
       </motion.div>
       <motion.div 
-        className="lg:w-[40%] w-full min-h-[600px] rounded-b-[32px] relative overflow-hidden"
+        className="w-full lg:w-[40%] min-h-[300px] md:min-h-[450px] lg:min-h-[600px] rounded-b-[20px] md:rounded-b-[28px] lg:rounded-b-[32px] relative overflow-hidden"
         variants={imageVariants}
       >
         {/* Background Image */}
@@ -178,68 +178,68 @@ const Hero = () => {
 
         {/* Feature Pills */}
         <motion.div 
-          className="absolute top-16 left-1/2 transform -translate-x-1/2 z-20"
+          className="absolute top-8 md:top-12 lg:top-16 left-1/2 transform -translate-x-1/2 z-20"
           custom={0}
           variants={pillVariants}
           initial="hidden"
           animate="visible"
         >
           <motion.div 
-            className="bg-white/20 backdrop-blur-md rounded-full px-4 py-2 flex items-center gap-2 border border-white/30"
+            className="bg-white/20 backdrop-blur-md rounded-full px-2 py-1 md:px-3 md:py-1.5 lg:px-4 lg:py-2 flex items-center gap-1 md:gap-2 border border-white/30"
             whileHover={{ scale: 1.1 }}
           >
-            <span className="w-2 h-2 bg-white rounded-full"></span>
-            <span className="text-white text-sm font-medium">Smart planning</span>
+            <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full"></span>
+            <span className="text-white text-xs md:text-sm font-medium">Smart planning</span>
           </motion.div>
         </motion.div>
 
         <motion.div 
-          className="absolute top-1/2 right-8 transform -translate-y-1/2 z-20"
+          className="absolute top-1/2 right-4 md:right-6 lg:right-8 transform -translate-y-1/2 z-20"
           custom={1}
           variants={pillVariants}
           initial="hidden"
           animate="visible"
         >
           <motion.div 
-            className="bg-white/20 backdrop-blur-md rounded-full px-4 py-2 flex items-center gap-2 border border-white/30"
+            className="bg-white/20 backdrop-blur-md rounded-full px-2 py-1 md:px-3 md:py-1.5 lg:px-4 lg:py-2 flex items-center gap-1 md:gap-2 border border-white/30"
             whileHover={{ scale: 1.1 }}
           >
-            <span className="w-2 h-2 bg-white rounded-full"></span>
-            <span className="text-white text-sm font-medium">Seamless process</span>
+            <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full"></span>
+            <span className="text-white text-xs md:text-sm font-medium">Seamless process</span>
           </motion.div>
         </motion.div>
 
         {/* Client Satisfaction Pill - Bottom Left */}
         <motion.div 
-          className="absolute bottom-8 left-8 z-20"
+          className="absolute bottom-4 left-4 md:bottom-6 md:left-6 lg:bottom-8 lg:left-8 z-20"
           custom={2}
           variants={pillVariants}
           initial="hidden"
           animate="visible"
         >
           <motion.div 
-            className="bg-white/20 backdrop-blur-md rounded-full px-4 py-2 flex items-center gap-2 border border-white/30"
+            className="bg-white/20 backdrop-blur-md rounded-full px-2 py-1 md:px-3 md:py-1.5 lg:px-4 lg:py-2 flex items-center gap-1 md:gap-2 border border-white/30"
             whileHover={{ scale: 1.1 }}
           >
-            <span className="w-2 h-2 bg-white rounded-full"></span>
-            <span className="text-white text-sm font-medium">Client satisfaction</span>
+            <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full"></span>
+            <span className="text-white text-xs md:text-sm font-medium">Client satisfaction</span>
           </motion.div>
         </motion.div>
 
         {/* Client Rating Section - Bottom Right */}
         <motion.div 
-          className="absolute bottom-8 right-8 z-20"
+          className="absolute bottom-4 right-4 md:bottom-6 md:right-6 lg:bottom-8 lg:right-8 z-20"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.6, type: "spring" }}
         >
           <motion.div 
-            className="bg-white/10 backdrop-blur-lg rounded-2xl p-4 border border-white/20"
+            className="bg-white/10 backdrop-blur-lg rounded-xl md:rounded-2xl p-2 md:p-3 lg:p-4 border border-white/20"
             whileHover={{ scale: 1.05 }}
           >
             {/* Avatar Stack */}
             <motion.div 
-              className="flex -space-x-3 mb-3"
+              className="flex -space-x-2 md:-space-x-3 mb-2 md:mb-3"
               initial="hidden"
               animate="visible"
               variants={{
@@ -260,7 +260,7 @@ const Hero = () => {
                   key={i}
                   src={src}
                   alt={`Client ${i + 1}`}
-                  className="w-10 h-10 rounded-full border-2 border-white/20"
+                  className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full border md:border-2 border-white/20"
                   variants={{
                     hidden: { opacity: 0, x: -10 },
                     visible: { opacity: 1, x: 0 }
@@ -271,7 +271,7 @@ const Hero = () => {
 
             {/* Stars */}
             <motion.div 
-              className="flex gap-1 justify-center mb-2"
+              className="flex gap-0.5 md:gap-1 justify-center mb-1 md:mb-2"
               initial="hidden"
               animate="visible"
               variants={{
@@ -285,7 +285,7 @@ const Hero = () => {
               {[...Array(5)].map((_, i) => (
                 <motion.svg 
                   key={i}
-                  className="w-4 h-4 fill-white" 
+                  className="w-3 h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 fill-white" 
                   viewBox="0 0 20 20"
                   variants={{
                     hidden: { opacity: 0, scale: 0, rotate: -180 },
@@ -309,8 +309,8 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 2.5, duration: 0.5 }}
             >
-              <p className="text-white text-sm font-medium">Rated 5 Stars by</p>
-              <p className="text-white/80 text-xs">2k+ happy clients</p>
+              <p className="text-white text-xs md:text-sm font-medium">Rated 5 Stars by</p>
+              <p className="text-white/80 text-[10px] md:text-xs">2k+ happy clients</p>
             </motion.div>
           </motion.div>
         </motion.div>

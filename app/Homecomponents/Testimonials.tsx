@@ -43,14 +43,14 @@ const marqueeVariants: Variants = {
 const Testimonials = () => {
   return (
      <motion.div 
-      className="flex flex-col justify-between lg:gap-10 gap-5 w-full lg:px-16 px-5 lg:py-26 py-10 items-center"
+      className="flex flex-col justify-between gap-4 md:gap-6 lg:gap-10 w-full px-4 md:px-8 lg:px-16 py-8 md:py-12 lg:py-26 items-center"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={containerVariants}
      >
       <motion.div 
-        className="w-fit rounded-full bg-stone-900 flex items-center justify-center px-4 py-2 text-lg text-white/85"
+        className="w-fit rounded-full bg-stone-900 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base lg:text-lg text-white/85"
         variants={itemVariants}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -58,7 +58,7 @@ const Testimonials = () => {
         Testimonials
       </motion.div>
       <motion.h5 
-        className="text-center text-5xl text-white/85 font-semibold tracking-tighter w-[66%]"
+        className="text-center text-2xl md:text-3xl lg:text-5xl text-white/85 font-semibold tracking-tighter w-full md:w-[80%] lg:w-[66%]"
         variants={itemVariants}
       >
         Hear from our clients
