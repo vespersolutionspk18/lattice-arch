@@ -1,7 +1,7 @@
 import Header from "./components/Header";
-import AboutUs from "./Homecomponents/AboutUs";
+import Slider from "./Homecomponents/Slider"
 import Hero from "./Homecomponents/Hero";
-import ProjectsMarquee from "./Homecomponents/ProjectsMarquee";
+
 import OurServices from "./Homecomponents/OurServices";
 import Testimonials from "./Homecomponents/Testimonials";
 import Faq from "./Homecomponents/Faq";
@@ -13,8 +13,8 @@ export default function Home() {
     <>
     <Header />
     <Hero />
-    <ProjectsMarquee />
-    <AboutUs />
+    <Slider />
+
     <OurServices />
     <Testimonials />
     <Faq />

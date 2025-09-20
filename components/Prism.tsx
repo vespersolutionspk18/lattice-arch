@@ -61,11 +61,13 @@ const Prism: React.FC<PrismProps> = ({
     const HOVSTR = Math.max(0, hoverStrength || 1);
     const INERT = Math.max(0, Math.min(1, inertia || 0.12));
 
-    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const dpr = Math.min(1.5, window.devicePixelRatio || 1);
     const renderer = new Renderer({
       dpr,
       alpha: transparent,
-      antialias: false
+      antialias: false,
+      powerPreference: 'low-power',
+      preserveDrawingBuffer: false
     });
     const gl = renderer.gl;
     gl.disable(gl.DEPTH_TEST);
@@ -89,7 +91,7 @@ const Prism: React.FC<PrismProps> = ({
     `;
 
     const fragment = /* glsl */ `
-      precision highp float;
+      precision mediump float;
 
       uniform vec2  iResolution;
       uniform float iTime;
@@ -175,7 +177,7 @@ const Prism: React.FC<PrismProps> = ({
           wob = mat2(c0, c1, c2, c0);
         }
 
-        const int STEPS = 100;
+        const int STEPS = 50;
         for (int i = 0; i < STEPS; i++) {
           p = vec3(f, z);
           p.xz = p.xz * wob;
@@ -184,7 +186,9 @@ const Prism: React.FC<PrismProps> = ({
           q.y += centerShift;
           d = 0.1 + 0.2 * abs(sdPyramidUpInv(q));
           z -= d;
-          o += (sin((p.y + z) * cf + vec4(0.0, 1.0, 2.0, 3.0)) + 1.0) / d;
+          if (d < 5.0) {
+            o += (sin((p.y + z) * cf + vec4(0.0, 1.0, 2.0, 3.0)) + 1.0) / d;
+          }
         }
 
         o = tanh4(o * o * (uGlow * uBloom) / 1e5);
@@ -239,15 +243,20 @@ const Prism: React.FC<PrismProps> = ({
     });
     const mesh = new Mesh(gl, { geometry, program });
 
+    let resizeTimer: NodeJS.Timeout | null = null;
     const resize = () => {
-      const w = container.clientWidth || 1;
-      const h = container.clientHeight || 1;
-      renderer.setSize(w, h);
-      iResBuf[0] = gl.drawingBufferWidth;
-      iResBuf[1] = gl.drawingBufferHeight;
-      offsetPxBuf[0] = offX * dpr;
-      offsetPxBuf[1] = offY * dpr;
-      program.uniforms.uPxScale.value = 1 / ((gl.drawingBufferHeight || 1) * 0.1 * SCALE);
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const w = container.clientWidth || 1;
+        const h = container.clientHeight || 1;
+        renderer.setSize(w, h);
+        iResBuf[0] = gl.drawingBufferWidth;
+        iResBuf[1] = gl.drawingBufferHeight;
+        offsetPxBuf[0] = offX * dpr;
+        offsetPxBuf[1] = offY * dpr;
+        program.uniforms.uPxScale.value = 1 / ((gl.drawingBufferHeight || 1) * 0.1 * SCALE);
+        resizeTimer = null;
+      }, 100);
     };
     const ro = new ResizeObserver(resize);
     ro.observe(container);
@@ -287,15 +296,18 @@ const Prism: React.FC<PrismProps> = ({
 
     const NOISE_IS_ZERO = NOISE < 1e-6;
     let raf = 0;
+    let frameCount = 0;
     const t0 = performance.now();
     const startRAF = () => {
       if (raf) return;
+      frameCount = 0;
       raf = requestAnimationFrame(render);
     };
     const stopRAF = () => {
       if (!raf) return;
       cancelAnimationFrame(raf);
       raf = 0;
+      frameCount = 0;
     };
 
     const rnd = () => Math.random();
@@ -348,6 +360,14 @@ const Prism: React.FC<PrismProps> = ({
     }
 
     const render = (t: number) => {
+      frameCount++;
+      
+      // Skip every other frame for better performance
+      if (frameCount % 2 === 0 && animationType !== 'hover') {
+        raf = requestAnimationFrame(render);
+        return;
+      }
+      
       const time = (t - t0) * 0.001;
       program.uniforms.iTime.value = time;
 
@@ -419,6 +439,7 @@ const Prism: React.FC<PrismProps> = ({
 
     return () => {
       stopRAF();
+      if (resizeTimer) clearTimeout(resizeTimer);
       ro.disconnect();
       if (animationType === 'hover') {
         if (onPointerMove) window.removeEventListener('pointermove', onPointerMove as EventListener);

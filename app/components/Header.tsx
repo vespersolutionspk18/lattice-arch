@@ -48,7 +48,7 @@ const Header = () => {
 
   return (
     <motion.div 
-      className="px-12 w-full"
+      className="px-12 w-full absolute top-0"
       initial="hidden"
       animate="visible"
       variants={containerVariants}

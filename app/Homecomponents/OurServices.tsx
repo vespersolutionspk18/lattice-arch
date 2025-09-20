@@ -84,7 +84,7 @@ const OurServices = () => {
     {
       icon: MdBusinessCenter,
       title: "CRM for Contractors",
-      description: "Comprehensive customer relationship management system designed specifically for contractors and remodellers.",
+      description: "Comprehensive CRM system designed specifically for contractors and remodellers.",
       image: "https://images.unsplash.com/photo-1560472355-536de3962603?w=400&q=80",
       alt: "CRM for Contractors"
     },
@@ -105,7 +105,7 @@ const OurServices = () => {
   ];
   return (
    <motion.div 
-    className="flex flex-col justify-between gap-4 md:gap-6 lg:gap-10 w-full px-4 md:px-8 lg:px-16 py-8 md:py-12 lg:py-16 items-center"
+    className="flex flex-col justify-between gap-4 md:gap-6 lg:gap-10 w-full px-4 md:px-8 lg:px-16 py-8 md:py-12 lg:py-16 items-center mt-20"
     initial="hidden"
     whileInView="visible"
     viewport={{ once: true, amount: 0.1 }}

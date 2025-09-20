@@ -42,18 +42,19 @@ const itemVariants: Variants = {
 
 const Hero = () => {
   return (
-    <div className="relative w-full">
-      <div style={{ width: '100%', height: '600px', position: 'absolute', top: 0, left: 0, zIndex: 0 }}>
+    <div className="relative w-full pt-12">
+      <div style={{ width: '100%', height: '800px', position: 'absolute', top: 0, left: 0, zIndex: 0 }} id="prism here"> 
         <Prism
           animationType="rotate"
-          timeScale={0.5}
+          timeScale={0.3}
           height={3.5}
           baseWidth={5.5}
           scale={3.6}
           hueShift={0}
           colorFrequency={1}
           noise={0}
-          glow={1}
+          glow={0.8}
+          suspendWhenOffscreen={true}
         />
       </div>
       <motion.div 
@@ -67,7 +68,7 @@ const Hero = () => {
         variants={containerVariants}
       >
         <motion.div 
-          className="w-fit rounded-full bg-stone-900 flex items-center justify-center py-1 px-3 text-sm text-white"
+          className="w-fit rounded-full bg-white/7 backdrop-blur-xl flex items-center justify-center py-1 px-3 text-sm text-white"
           variants={itemVariants}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -86,7 +87,7 @@ const Hero = () => {
             >Your Style</motion.span> and Needs
         </motion.h1>
         <motion.p 
-          className="text-base md:text-xl lg:text-2xl text-stone-400"
+          className="text-base md:text-xl lg:text-2xl text-stone-200"
           variants={itemVariants}
         >
             Building new or upgrading? We craft stylish, inspiring spaces that feel uniquely yours.
@@ -114,8 +115,8 @@ const Hero = () => {
           className="w-full relative"
           variants={itemVariants}
         >
-            <div className="absolute left-0 top-0 w-16 md:w-24 lg:w-32 h-full bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute right-0 top-0 w-16 md:w-24 lg:w-32 h-full bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute left-0 top-0 w-16 md:w-24 lg:w-32 h-full bg-gradient-to-r from-opacity-0 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 w-16 md:w-24 lg:w-32 h-full bg-gradient-to-l from-opacity-0 to-transparent z-10 pointer-events-none"></div>
             <Marquee
               direction="right"
               speed={30}
@@ -135,7 +136,7 @@ const Hero = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.8 + i * 0.1 }}
                   >
-                    <Icon className="text-2xl md:text-3xl lg:text-4xl text-stone-500" />
+                    <Icon className="text-2xl md:text-3xl lg:text-4xl text-stone-900" />
                   </motion.div>
                 ))}
               </motion.div>
