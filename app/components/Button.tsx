@@ -34,7 +34,7 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
-      className={`rounded-full flex items-center justify-center text-lg px-4 py-2 w-fit font-regular transition-all duration-200 ease-in-out cursor-pointer ${variants[variant]}`}
+      className={`rounded-full flex items-center justify-center text-md px-3 py-1 w-fit font-regular transition-all duration-200 ease-in-out cursor-pointer ${variants[variant]}`}
       onClick={handleClick}
     >
       {children}

@@ -48,7 +48,7 @@ const Header = () => {
 
   return (
     <motion.div 
-      className="px-4 w-full bg-black"
+      className="px-12 w-full"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -64,7 +64,7 @@ const Header = () => {
         
         {/* Desktop Navigation */}
         <motion.div 
-          className="hidden md:flex flex-row gap-4 lg:gap-8 text-white text-lg lg:text-xl font-light"
+          className="hidden md:flex flex-row gap-4 lg:gap-8 text-white/85 text-lg lg:text-xl font-light"
           variants={containerVariants}
         >
             {['Home', 'Services', 'About', 'Projects'].map((item) => (
@@ -93,7 +93,7 @@ const Header = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Button variant='white' route='/contact'>Book A Meeting</Button>
+            <Button variant='white' route='/contact'>Login</Button>
           </motion.div>
         </motion.div>
 
@@ -123,7 +123,7 @@ const Header = () => {
               {['Home', 'Services', 'About', 'Projects'].map((item, index) => (
                 <motion.p
                   key={item}
-                  className="text-white text-2xl font-light"
+                  className="text-white/85 text-xl font-light"
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
@@ -138,7 +138,7 @@ const Header = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                <Button variant='white' route='/contact'>Book A Meeting</Button>
+                <Button variant='white' route='/contact'>Login</Button>
               </motion.div>
             </div>
           </motion.div>
