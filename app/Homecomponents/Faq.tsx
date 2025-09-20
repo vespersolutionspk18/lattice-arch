@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react'
+import { motion, Variants, AnimatePresence } from 'motion/react'
 import { ChevronDown } from 'lucide-react'
 
 const faqs = [
@@ -29,49 +30,137 @@ const faqs = [
   }
 ]
 
-const FaqItem = ({ question, answer, isOpen, onClick }: { question: string, answer: string, isOpen: boolean, onClick: () => void }) => {
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring" as const,
+      stiffness: 100,
+      damping: 12,
+      delay: i * 0.1
+    }
+  })
+}
+
+const FaqItem = ({ question, answer, isOpen, onClick, index }: { question: string, answer: string, isOpen: boolean, onClick: () => void, index: number }) => {
   return (
-    <div className="border-b border-stone-800 last:border-b-0">
-      <button
+    <motion.div 
+      className="border-b border-stone-800 last:border-b-0"
+      custom={index}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={itemVariants}
+    >
+      <motion.button
         onClick={onClick}
         className="w-full py-6 flex justify-between items-center text-left hover:text-white transition-colors"
+        whileTap={{ scale: 0.98 }}
       >
         <h3 className="text-xl text-white/85 font-light pr-8">{question}</h3>
-        <ChevronDown 
-          className={`text-white/60 transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`} 
-          size={24} 
-        />
-      </button>
-      <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 pb-6' : 'max-h-0'}`}>
-        <p className="text-lg text-stone-400 leading-relaxed">{answer}</p>
-      </div>
-    </div>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <ChevronDown 
+            className="text-white/60 flex-shrink-0"
+            size={24} 
+          />
+        </motion.div>
+      </motion.button>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ 
+              duration: 0.3,
+              ease: "easeInOut"
+            }}
+            className="overflow-hidden"
+          >
+            <motion.p 
+              className="text-lg text-stone-400 leading-relaxed pb-6"
+              initial={{ y: -20 }}
+              animate={{ y: 0 }}
+              transition={{ delay: 0.1 }}
+            >
+              {answer}
+            </motion.p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   )
+}
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1
+    }
+  }
+}
+
+const titleVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring" as const,
+      stiffness: 100,
+      damping: 12
+    }
+  }
 }
 
 const Faq = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <div className="flex flex-col justify-between lg:gap-10 gap-5 w-full lg:px-16 px-5 lg:py-16 py-10 items-center">
-      <div className="w-fit rounded-full bg-stone-900 flex items-center justify-center px-4 py-2 text-lg text-white/85">
+    <motion.div 
+      className="flex flex-col justify-between lg:gap-10 gap-5 w-full lg:px-16 px-5 lg:py-16 py-10 items-center"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={containerVariants}
+    >
+      <motion.div 
+        className="w-fit rounded-full bg-stone-900 flex items-center justify-center px-4 py-2 text-lg text-white/85"
+        variants={titleVariants}
+        whileHover={{ scale: 1.05 }}
+      >
         Frequently Asked Questions
-      </div>
-      <h5 className="text-center text-5xl text-white/85 font-semibold tracking-tighter lg:w-[66%] w-full">
+      </motion.div>
+      <motion.h5 
+        className="text-center text-5xl text-white/85 font-semibold tracking-tighter lg:w-[66%] w-full"
+        variants={titleVariants}
+      >
         Everything you need to know about our architectural services and process
-      </h5>
-      <div className="lg:w-[66%] w-full mt-8">
+      </motion.h5>
+      <motion.div 
+        className="lg:w-[66%] w-full mt-8"
+        variants={containerVariants}
+      >
         {faqs.map((faq, index) => (
           <FaqItem
             key={index}
+            index={index}
             question={faq.question}
             answer={faq.answer}
             isOpen={openIndex === index}
             onClick={() => setOpenIndex(openIndex === index ? null : index)}
           />
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 

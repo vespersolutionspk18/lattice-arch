@@ -1,6 +1,32 @@
 "use client"
 import React from 'react'
+import { motion, Variants } from 'motion/react'
 import Image from 'next/image'
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: (i: number) => ({
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delay: i * 0.1,
+      type: "spring" as const,
+      stiffness: 100,
+      damping: 15
+    }
+  })
+}
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.2
+    }
+  }
+}
 
 const ProjectsMarquee = () => {
   // Using Unsplash images
@@ -19,104 +45,134 @@ const ProjectsMarquee = () => {
   const duplicatedImages = [...projectImages, ...projectImages]
 
   return (
-    <div className=" w-full overflow-hidden mt-20 py-8">
+    <motion.div 
+      className="w-full overflow-hidden mt-20 py-8"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={containerVariants}
+    >
       <div className="relative flex">
-        <div className="animate-marquee flex items-end gap-8 pr-6">
+        <motion.div 
+          className="animate-marquee flex items-end gap-8 pr-6"
+          initial={{ x: 0 }}
+          animate={{ x: "-50%" }}
+          transition={{
+            duration: 60,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        >
           {duplicatedImages.map((image, index) => (
             index % 2 === 0 ? (
-              <div
+              <motion.div
                 key={`first-${index}`}
-                className="relative flex-shrink-0 h-100 w-80 rounded-b-xl overflow-hidden"
+                className="relative flex-shrink-0 h-100 w-80 rounded-b-xl overflow-hidden group"
+                custom={index}
+                variants={cardVariants}
+                whileHover={{ 
+                  scale: 1.05,
+                  transition: { duration: 0.3 }
+                }}
               >
-                <div className="absolute inset-0 rounded-t-full overflow-hidden bg-gray-200">
+                <motion.div 
+                  className="absolute inset-0 rounded-t-full overflow-hidden bg-gray-200"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
+                >
                   <Image
                     src={image}
                     alt={`Project ${(index % projectImages.length) + 1}`}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                     sizes="(max-width: 768px) 320px, 320px"
                   />
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ) : (
-              <div
+              <motion.div
                 key={`first-${index}`}
-                className="relative flex-shrink-0 h-64 w-106 rounded-xl overflow-hidden bg-gray-200"
+                className="relative flex-shrink-0 h-64 w-106 rounded-xl overflow-hidden bg-gray-200 group"
+                custom={index}
+                variants={cardVariants}
+                whileHover={{ 
+                  scale: 1.05,
+                  rotate: 2,
+                  transition: { duration: 0.3 }
+                }}
               >
                 <Image
                   src={image}
                   alt={`Project ${(index % projectImages.length) + 1}`}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                   sizes="(max-width: 768px) 320px, 320px"
                 />
-              </div>
+              </motion.div>
             )
           ))}
-        </div>
-        <div className="animate-marquee2 absolute top-0 flex items-end gap-8 pr-6">
+        </motion.div>
+        <motion.div 
+          className="absolute top-0 flex items-end gap-8 pr-6"
+          initial={{ x: 0 }}
+          animate={{ x: "-50%" }}
+          transition={{
+            duration: 60,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        >
           {duplicatedImages.map((image, index) => (
             index % 2 === 0 ? (
-              <div
+              <motion.div
                 key={`second-${index}`}
-                className="relative flex-shrink-0 h-100 w-80 rounded-b-xl overflow-hidden"
+                className="relative flex-shrink-0 h-100 w-80 rounded-b-xl overflow-hidden group"
+                custom={index}
+                variants={cardVariants}
+                whileHover={{ 
+                  scale: 1.05,
+                  transition: { duration: 0.3 }
+                }}
               >
-                <div className="absolute inset-0 rounded-t-full overflow-hidden bg-gray-200">
+                <motion.div 
+                  className="absolute inset-0 rounded-t-full overflow-hidden bg-gray-200"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
+                >
                   <Image
                     src={image}
                     alt={`Project ${(index % projectImages.length) + 1}`}
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                     sizes="(max-width: 768px) 320px, 320px"
                   />
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ) : (
-              <div
+              <motion.div
                 key={`second-${index}`}
-                className="relative flex-shrink-0 h-64 w-106 rounded-xl overflow-hidden bg-gray-200"
+                className="relative flex-shrink-0 h-64 w-106 rounded-xl overflow-hidden bg-gray-200 group"
+                custom={index}
+                variants={cardVariants}
+                whileHover={{ 
+                  scale: 1.05,
+                  rotate: -2,
+                  transition: { duration: 0.3 }
+                }}
               >
                 <Image
                   src={image}
                   alt={`Project ${(index % projectImages.length) + 1}`}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                   sizes="(max-width: 768px) 320px, 320px"
                 />
-              </div>
+              </motion.div>
             )
           ))}
-        </div>
+        </motion.div>
       </div>
-      
-      <style jsx>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        
-        @keyframes marquee2 {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-        
-        .animate-marquee {
-          animation: marquee 60s linear infinite;
-        }
-        
-        .animate-marquee2 {
-          animation: marquee2 60s linear infinite;
-        }
-      `}</style>
-    </div>
+    </motion.div>
   )
 }
 
