@@ -7,13 +7,14 @@ import Testimonials from "./Homecomponents/Testimonials";
 import Faq from "./Homecomponents/Faq";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
+import ProjectsMarquee from "./Homecomponents/ProjectsMarquee";
 
 export default function Home() {
   return (
     <>
     <Header />
     <Hero />
-    <Slider />
+    <ProjectsMarquee />
 
     <OurServices />
     <Testimonials />

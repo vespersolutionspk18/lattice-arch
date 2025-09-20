@@ -454,17 +454,18 @@ const Slider: React.FC<BeforeAfterSliderProps> = ({
 
 // Default export with example usage
 const SliderComponent = () => {
-  // Example usage - replace with your actual images
+  // Using Unsplash images for demonstration
+  // You can change these to any Unsplash image by modifying the photo ID in the URL
   return (
     <Slider
-      beforeImage="/images/before.jpg"
-      afterImage="/images/after.jpg"
-      beforeAlt="Original image"
-      afterAlt="Enhanced image"
+      beforeImage="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=100"
+      afterImage="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=1920&q=100"
+      beforeAlt="Mountain landscape in daylight"
+      afterAlt="Mountain landscape at sunset"
       initialPosition={50}
       height={600}
       showLabels={true}
-      labels={{ before: 'Before', after: 'After' }}
+      labels={{ before: 'Daylight', after: 'Sunset' }}
       labelPosition="top"
       sliderColor="#ffffff"
       handleColor="#ffffff"
