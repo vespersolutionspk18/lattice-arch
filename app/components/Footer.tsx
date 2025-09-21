@@ -4,6 +4,7 @@ import React from 'react'
 import { motion, Variants } from 'motion/react'
 import Link from 'next/link'
 import { Mail, Phone, MapPin } from 'lucide-react'
+import LogoTest from './LogoTest'
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -77,16 +78,13 @@ const Footer = () => {
             variants={itemVariants}
           >
             <motion.div 
-              className="flex items-center gap-3"
-              whileHover={{ scale: 1.05 }}
-            >
-              <motion.div 
-                className="w-10 h-10 bg-white rounded-lg"
-                whileHover={{ rotate: 180 }}
-                transition={{ duration: 0.5 }}
-              />
-              <span className="text-xl md:text-2xl font-semibold text-white">Lattice Arch</span>
-            </motion.div>
+          className="font-light flex flex-row gap-3 text-2xl md:text-3xl text-white"
+          variants={itemVariants}
+          whileHover={{ scale: 1.05 }}
+        >
+          <LogoTest/>
+          <p className="tracking-tighter font-regular">Lattice</p>
+        </motion.div>
             
             <motion.div 
               className="flex flex-col gap-3 md:gap-4 text-stone-400 text-sm md:text-base"
@@ -134,13 +132,18 @@ const Footer = () => {
                 className="flex flex-col gap-2 md:gap-3 text-stone-400 text-sm md:text-base"
                 variants={containerVariants}
               >
-                {['Layout Design', '3D Rendering', 'AI Remodeller', 'CRM Solutions'].map((item, index) => (
-                  <motion.div key={item} variants={linkVariants} whileHover={{ x: 5 }}>
+                {[
+                  { name: 'Floor Plans & Elevation', link: '/services/floor-plans-and-front-elevation' },
+                  { name: '3D Rendering', link: '/services/3d-rendering' },
+                  { name: 'AI Remodeller', link: '/services/ai-remodeller' },
+                  { name: 'CRM for Contractors', link: '/services/crm-for-contractors' }
+                ].map((item, index) => (
+                  <motion.div key={item.name} variants={linkVariants} whileHover={{ x: 5 }}>
                     <Link 
-                      href={`/services/${item.toLowerCase().replace(' ', '-')}`} 
+                      href={item.link} 
                       className="hover:text-white transition-colors inline-block"
                     >
-                      {item}
+                      {item.name}
                     </Link>
                   </motion.div>
                 ))}
@@ -156,13 +159,18 @@ const Footer = () => {
                 className="flex flex-col gap-2 md:gap-3 text-stone-400 text-sm md:text-base"
                 variants={containerVariants}
               >
-                {['About Us', 'Portfolio', 'Testimonials', 'Careers'].map((item) => (
-                  <motion.div key={item} variants={linkVariants} whileHover={{ x: 5 }}>
+                {[
+                  { name: 'About Us', link: '/about' },
+                  { name: 'Contact Us', link: '/contact' },
+                  { name: 'Services', link: '/#services' },
+                  { name: 'Home', link: '/' }
+                ].map((item) => (
+                  <motion.div key={item.name} variants={linkVariants} whileHover={{ x: 5 }}>
                     <Link 
-                      href={`/${item.toLowerCase().replace(' ', '')}`} 
+                      href={item.link} 
                       className="hover:text-white transition-colors inline-block"
                     >
-                      {item}
+                      {item.name}
                     </Link>
                   </motion.div>
                 ))}
@@ -178,13 +186,18 @@ const Footer = () => {
                 className="flex flex-col gap-2 md:gap-3 text-stone-400 text-sm md:text-base"
                 variants={containerVariants}
               >
-                {['Showroom', 'Materials', 'Blog', 'FAQ'].map((item) => (
-                  <motion.div key={item} variants={linkVariants} whileHover={{ x: 5 }}>
+                {[
+                  { name: 'Material Showroom', link: '/services/material-showroom' },
+                  { name: 'Free Website', link: '/services/free-website' },
+                  { name: 'All Services', link: '/#services' },
+                  { name: 'Get Started', link: '/contact' }
+                ].map((item) => (
+                  <motion.div key={item.name} variants={linkVariants} whileHover={{ x: 5 }}>
                     <Link 
-                      href={`/${item.toLowerCase()}`} 
+                      href={item.link} 
                       className="hover:text-white transition-colors inline-block"
                     >
-                      {item}
+                      {item.name}
                     </Link>
                   </motion.div>
                 ))}
@@ -200,13 +213,17 @@ const Footer = () => {
                 className="flex flex-col gap-2 md:gap-3 text-stone-400 text-sm md:text-base"
                 variants={containerVariants}
               >
-                {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((item) => (
-                  <motion.div key={item} variants={linkVariants} whileHover={{ x: 5 }}>
+                {[
+                  { name: 'Contact Form', link: '/contact' },
+                  { name: 'About Lattice', link: '/about' },
+                  { name: 'Our Services', link: '/#services' }
+                ].map((item) => (
+                  <motion.div key={item.name} variants={linkVariants} whileHover={{ x: 5 }}>
                     <Link 
-                      href={`/${item.toLowerCase().replace(' ', '-').replace('of-', '')}`} 
+                      href={item.link} 
                       className="hover:text-white transition-colors inline-block"
                     >
-                      {item}
+                      {item.name}
                     </Link>
                   </motion.div>
                 ))}
@@ -224,7 +241,7 @@ const Footer = () => {
             className="flex flex-col md:flex-row justify-between items-center gap-2 md:gap-3 lg:gap-4 text-stone-500 text-xs md:text-sm text-center md:text-left"
             variants={containerVariants}
           >
-            <motion.p variants={linkVariants}>© {new Date().getFullYear()} Lattice Arch. All rights reserved.</motion.p>
+            <motion.p variants={linkVariants}>© {new Date().getFullYear()} Lattice. All rights reserved.</motion.p>
             <motion.p variants={linkVariants}>Designed and built with excellence in architecture.</motion.p>
           </motion.div>
         </motion.div>

@@ -173,16 +173,19 @@ const Comparison = () => {
                 <h3 className="text-lg md:text-xl font-medium text-gray-500">Other Agencies</h3>
               </th>
               <th className="w-[50%] py-5 px-3">
-                <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col items-center justify-center gap-3">
                   <div className="flex items-center justify-center gap-2">
                     <LogoTest />
                     <h3 className="text-lg md:text-xl font-normal tracking-tighter text-white">
                       Lattice
                     </h3>
                   </div>
-                  <span className="mt-1 px-2 py-0.5 text-xs rounded-full bg-gradient-to-r from-purple-600 to-violet-600 text-white font-semibold animate-pulse">
-                    PREMIUM
-                  </span>
+                  <div className="flex items-center justify-center gap-1 mt-2">
+                    <LogoPurpleSmall animate={false} />
+                    <span className="text-xs text-purple-300 font-medium">
+                      = Lattice Industry Original
+                    </span>
+                  </div>
                 </div>
               </th>
             </tr>

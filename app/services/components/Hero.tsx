@@ -80,7 +80,7 @@ const Hero: React.FC<HeroProps> = ({
       >
         {/* Left Column - Content */}
         <motion.div
-          className="w-full lg:w-1/2 flex flex-col gap-4 md:gap-6 lg:gap-8 justify-center items-start text-left"
+          className="w-full lg:w-5/12 flex flex-col gap-4 md:gap-6 lg:gap-8 justify-center items-start text-left"
           variants={containerVariants}
         >
           {/* Pill Badge */}
@@ -137,7 +137,7 @@ const Hero: React.FC<HeroProps> = ({
 
         {/* Right Column - Custom Content or Image */}
         <motion.div
-          className="w-full lg:w-1/2 flex items-center justify-center lg:justify-end"
+          className="w-full lg:w-7/12 flex items-center justify-center lg:justify-end"
           variants={imageVariants}
         >
           {rightContent ? (

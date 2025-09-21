@@ -1,0 +1,47 @@
+<svg width="42" height="42" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+  <!-- Back/hidden edges (lower opacity) -->
+  <g id="back-edges" opacity="0.3">
+    <!-- Back bottom edge -->
+    <line x1="13" y1="17" x2="21" y2="13" stroke="white" stroke-width="1"/>
+    <!-- Back right vertical edge -->
+    <line x1="21" y1="13" x2="21" y2="21" stroke="white" stroke-width="1"/>
+  </g>
+
+  <!-- Bottom face edges -->
+  <g id="bottom-edges">
+    <line x1="13" y1="25" x2="21" y2="29" stroke="white" stroke-width="1"/>
+    <line x1="21" y1="29" x2="29" y2="25" stroke="white" stroke-width="1"/>
+    <line x1="29" y1="25" x2="21" y2="21" stroke="white" stroke-width="1"/>
+    <line x1="21" y1="21" x2="13" y2="25" stroke="white" stroke-width="1"/>
+  </g>
+
+  <!-- Vertical edges -->
+  <g id="vertical-edges">
+    <line x1="13" y1="25" x2="13" y2="17" stroke="white" stroke-width="1"/>
+    <line x1="21" y1="29" x2="21" y2="21" stroke="white" stroke-width="1"/>
+    <line x1="29" y1="25" x2="29" y2="17" stroke="white" stroke-width="1"/>
+  </g>
+
+  <!-- Top face edges -->
+  <g id="top-edges">
+    <line x1="13" y1="17" x2="21" y2="13" stroke="white" stroke-width="1"/>
+    <line x1="21" y1="13" x2="29" y2="17" stroke="white" stroke-width="1"/>
+    <line x1="29" y1="17" x2="21" y2="21" stroke="white" stroke-width="1"/>
+    <line x1="21" y1="21" x2="13" y2="17" stroke="white" stroke-width="1"/>
+  </g>
+
+  <!-- Vertices (white border, black fill spheres) - only 8 vertices for a cube -->
+  <g id="vertices">
+    <!-- Bottom face vertices (4) -->
+    <circle cx="13" cy="25" r="1.5" fill="black" stroke="white" stroke-width="0.5"/>
+    <circle cx="21" cy="29" r="1.5" fill="black" stroke="white" stroke-width="0.5"/>
+    <circle cx="29" cy="25" r="1.5" fill="black" stroke="white" stroke-width="0.5"/>
+    <circle cx="21" cy="21" r="1.5" fill="black" stroke="white" stroke-width="0.5"/>
+    
+    <!-- Top face vertices (4) -->
+    <circle cx="13" cy="17" r="1.5" fill="black" stroke="white" stroke-width="0.5"/>
+    <circle cx="21" cy="13" r="1.5" fill="black" stroke="white" stroke-width="0.5"/>
+    <circle cx="29" cy="17" r="1.5" fill="black" stroke="white" stroke-width="0.5"/>
+    <!-- Fourth top vertex is shared with bottom (21,21) -->
+  </g>
+</svg>

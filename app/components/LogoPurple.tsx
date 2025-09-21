@@ -6,7 +6,11 @@ import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 
 gsap.registerPlugin(MotionPathPlugin)
 
-const LogoPurple: React.FC = () => {
+interface LogoPurpleProps {
+  animate?: boolean
+}
+
+const LogoPurple: React.FC<LogoPurpleProps> = ({ animate = true }) => {
   const containerRef = useRef<HTMLDivElement>(null)
   const svgRef = useRef<SVGSVGElement>(null)
   
@@ -78,161 +82,182 @@ const LogoPurple: React.FC = () => {
     // Update function that will be called on each frame
     const updateCube = () => {
       const verts = calculateVertices(rotationState.angle)
+      const svg = svgRef.current
+      if (!svg) return
       
-      // Update all edges
+      // Update all edges using querySelector scoped to this SVG instance
       // Bottom face edges
-      gsap.set("#edge-bottom-front", {
-        attr: {
-          x1: verts.bottomFrontLeft.x,
-          y1: verts.bottomFrontLeft.y,
-          x2: verts.bottomFrontRight.x,
-          y2: verts.bottomFrontRight.y
-        }
-      })
-      gsap.set("#edge-bottom-right", {
-        attr: {
-          x1: verts.bottomFrontRight.x,
-          y1: verts.bottomFrontRight.y,
-          x2: verts.bottomBackRight.x,
-          y2: verts.bottomBackRight.y
-        }
-      })
-      gsap.set("#edge-bottom-back", {
-        attr: {
-          x1: verts.bottomBackRight.x,
-          y1: verts.bottomBackRight.y,
-          x2: verts.bottomBackLeft.x,
-          y2: verts.bottomBackLeft.y
-        }
-      })
-      gsap.set("#edge-bottom-left", {
-        attr: {
-          x1: verts.bottomBackLeft.x,
-          y1: verts.bottomBackLeft.y,
-          x2: verts.bottomFrontLeft.x,
-          y2: verts.bottomFrontLeft.y
-        }
-      })
+      const edgeBottomFront = svg.querySelector(".edge-bottom-front")
+      if (edgeBottomFront) {
+        edgeBottomFront.setAttribute('x1', verts.bottomFrontLeft.x.toString())
+        edgeBottomFront.setAttribute('y1', verts.bottomFrontLeft.y.toString())
+        edgeBottomFront.setAttribute('x2', verts.bottomFrontRight.x.toString())
+        edgeBottomFront.setAttribute('y2', verts.bottomFrontRight.y.toString())
+      }
+      
+      const edgeBottomRight = svg.querySelector(".edge-bottom-right")
+      if (edgeBottomRight) {
+        edgeBottomRight.setAttribute('x1', verts.bottomFrontRight.x.toString())
+        edgeBottomRight.setAttribute('y1', verts.bottomFrontRight.y.toString())
+        edgeBottomRight.setAttribute('x2', verts.bottomBackRight.x.toString())
+        edgeBottomRight.setAttribute('y2', verts.bottomBackRight.y.toString())
+      }
+      
+      const edgeBottomBack = svg.querySelector(".edge-bottom-back")
+      if (edgeBottomBack) {
+        edgeBottomBack.setAttribute('x1', verts.bottomBackRight.x.toString())
+        edgeBottomBack.setAttribute('y1', verts.bottomBackRight.y.toString())
+        edgeBottomBack.setAttribute('x2', verts.bottomBackLeft.x.toString())
+        edgeBottomBack.setAttribute('y2', verts.bottomBackLeft.y.toString())
+      }
+      
+      const edgeBottomLeft = svg.querySelector(".edge-bottom-left")
+      if (edgeBottomLeft) {
+        edgeBottomLeft.setAttribute('x1', verts.bottomBackLeft.x.toString())
+        edgeBottomLeft.setAttribute('y1', verts.bottomBackLeft.y.toString())
+        edgeBottomLeft.setAttribute('x2', verts.bottomFrontLeft.x.toString())
+        edgeBottomLeft.setAttribute('y2', verts.bottomFrontLeft.y.toString())
+      }
       
       // Vertical edges
-      gsap.set("#edge-vertical-front-left", {
-        attr: {
-          x1: verts.bottomFrontLeft.x,
-          y1: verts.bottomFrontLeft.y,
-          x2: verts.topFrontLeft.x,
-          y2: verts.topFrontLeft.y
-        }
-      })
-      gsap.set("#edge-vertical-front-right", {
-        attr: {
-          x1: verts.bottomFrontRight.x,
-          y1: verts.bottomFrontRight.y,
-          x2: verts.topFrontRight.x,
-          y2: verts.topFrontRight.y
-        }
-      })
-      gsap.set("#edge-vertical-back-left", {
-        attr: {
-          x1: verts.bottomBackLeft.x,
-          y1: verts.bottomBackLeft.y,
-          x2: verts.topBackLeft.x,
-          y2: verts.topBackLeft.y
-        }
-      })
-      gsap.set("#edge-vertical-back-right", {
-        attr: {
-          x1: verts.bottomBackRight.x,
-          y1: verts.bottomBackRight.y,
-          x2: verts.topBackRight.x,
-          y2: verts.topBackRight.y
-        }
-      })
+      const edgeVerticalFrontLeft = svg.querySelector(".edge-vertical-front-left")
+      if (edgeVerticalFrontLeft) {
+        edgeVerticalFrontLeft.setAttribute('x1', verts.bottomFrontLeft.x.toString())
+        edgeVerticalFrontLeft.setAttribute('y1', verts.bottomFrontLeft.y.toString())
+        edgeVerticalFrontLeft.setAttribute('x2', verts.topFrontLeft.x.toString())
+        edgeVerticalFrontLeft.setAttribute('y2', verts.topFrontLeft.y.toString())
+      }
+      
+      const edgeVerticalFrontRight = svg.querySelector(".edge-vertical-front-right")
+      if (edgeVerticalFrontRight) {
+        edgeVerticalFrontRight.setAttribute('x1', verts.bottomFrontRight.x.toString())
+        edgeVerticalFrontRight.setAttribute('y1', verts.bottomFrontRight.y.toString())
+        edgeVerticalFrontRight.setAttribute('x2', verts.topFrontRight.x.toString())
+        edgeVerticalFrontRight.setAttribute('y2', verts.topFrontRight.y.toString())
+      }
+      
+      const edgeVerticalBackLeft = svg.querySelector(".edge-vertical-back-left")
+      if (edgeVerticalBackLeft) {
+        edgeVerticalBackLeft.setAttribute('x1', verts.bottomBackLeft.x.toString())
+        edgeVerticalBackLeft.setAttribute('y1', verts.bottomBackLeft.y.toString())
+        edgeVerticalBackLeft.setAttribute('x2', verts.topBackLeft.x.toString())
+        edgeVerticalBackLeft.setAttribute('y2', verts.topBackLeft.y.toString())
+      }
+      
+      const edgeVerticalBackRight = svg.querySelector(".edge-vertical-back-right")
+      if (edgeVerticalBackRight) {
+        edgeVerticalBackRight.setAttribute('x1', verts.bottomBackRight.x.toString())
+        edgeVerticalBackRight.setAttribute('y1', verts.bottomBackRight.y.toString())
+        edgeVerticalBackRight.setAttribute('x2', verts.topBackRight.x.toString())
+        edgeVerticalBackRight.setAttribute('y2', verts.topBackRight.y.toString())
+      }
       
       // Top face edges
-      gsap.set("#edge-top-front", {
-        attr: {
-          x1: verts.topFrontLeft.x,
-          y1: verts.topFrontLeft.y,
-          x2: verts.topFrontRight.x,
-          y2: verts.topFrontRight.y
-        }
-      })
-      gsap.set("#edge-top-right", {
-        attr: {
-          x1: verts.topFrontRight.x,
-          y1: verts.topFrontRight.y,
-          x2: verts.topBackRight.x,
-          y2: verts.topBackRight.y
-        }
-      })
-      gsap.set("#edge-top-back", {
-        attr: {
-          x1: verts.topBackRight.x,
-          y1: verts.topBackRight.y,
-          x2: verts.topBackLeft.x,
-          y2: verts.topBackLeft.y
-        }
-      })
-      gsap.set("#edge-top-left", {
-        attr: {
-          x1: verts.topBackLeft.x,
-          y1: verts.topBackLeft.y,
-          x2: verts.topFrontLeft.x,
-          y2: verts.topFrontLeft.y
-        }
-      })
+      const edgeTopFront = svg.querySelector(".edge-top-front")
+      if (edgeTopFront) {
+        edgeTopFront.setAttribute('x1', verts.topFrontLeft.x.toString())
+        edgeTopFront.setAttribute('y1', verts.topFrontLeft.y.toString())
+        edgeTopFront.setAttribute('x2', verts.topFrontRight.x.toString())
+        edgeTopFront.setAttribute('y2', verts.topFrontRight.y.toString())
+      }
+      
+      const edgeTopRight = svg.querySelector(".edge-top-right")
+      if (edgeTopRight) {
+        edgeTopRight.setAttribute('x1', verts.topFrontRight.x.toString())
+        edgeTopRight.setAttribute('y1', verts.topFrontRight.y.toString())
+        edgeTopRight.setAttribute('x2', verts.topBackRight.x.toString())
+        edgeTopRight.setAttribute('y2', verts.topBackRight.y.toString())
+      }
+      
+      const edgeTopBack = svg.querySelector(".edge-top-back")
+      if (edgeTopBack) {
+        edgeTopBack.setAttribute('x1', verts.topBackRight.x.toString())
+        edgeTopBack.setAttribute('y1', verts.topBackRight.y.toString())
+        edgeTopBack.setAttribute('x2', verts.topBackLeft.x.toString())
+        edgeTopBack.setAttribute('y2', verts.topBackLeft.y.toString())
+      }
+      
+      const edgeTopLeft = svg.querySelector(".edge-top-left")
+      if (edgeTopLeft) {
+        edgeTopLeft.setAttribute('x1', verts.topBackLeft.x.toString())
+        edgeTopLeft.setAttribute('y1', verts.topBackLeft.y.toString())
+        edgeTopLeft.setAttribute('x2', verts.topFrontLeft.x.toString())
+        edgeTopLeft.setAttribute('y2', verts.topFrontLeft.y.toString())
+      }
       
       // Back edges (hidden)
-      gsap.set("#edge-back-bottom", {
-        attr: {
-          x1: verts.bottomBackLeft.x,
-          y1: verts.bottomBackLeft.y,
-          x2: verts.bottomBackRight.x,
-          y2: verts.bottomBackRight.y
-        }
-      })
-      gsap.set("#edge-back-vertical", {
-        attr: {
-          x1: verts.bottomBackLeft.x,
-          y1: verts.bottomBackLeft.y,
-          x2: verts.topBackLeft.x,
-          y2: verts.topBackLeft.y
-        }
-      })
-      gsap.set("#edge-back-top", {
-        attr: {
-          x1: verts.topBackLeft.x,
-          y1: verts.topBackLeft.y,
-          x2: verts.topBackRight.x,
-          y2: verts.topBackRight.y
-        }
-      })
+      const edgeBackBottom = svg.querySelector(".edge-back-bottom")
+      if (edgeBackBottom) {
+        edgeBackBottom.setAttribute('x1', verts.bottomBackLeft.x.toString())
+        edgeBackBottom.setAttribute('y1', verts.bottomBackLeft.y.toString())
+        edgeBackBottom.setAttribute('x2', verts.bottomBackRight.x.toString())
+        edgeBackBottom.setAttribute('y2', verts.bottomBackRight.y.toString())
+      }
+      
+      const edgeBackVertical = svg.querySelector(".edge-back-vertical")
+      if (edgeBackVertical) {
+        edgeBackVertical.setAttribute('x1', verts.bottomBackLeft.x.toString())
+        edgeBackVertical.setAttribute('y1', verts.bottomBackLeft.y.toString())
+        edgeBackVertical.setAttribute('x2', verts.topBackLeft.x.toString())
+        edgeBackVertical.setAttribute('y2', verts.topBackLeft.y.toString())
+      }
+      
+      const edgeBackTop = svg.querySelector(".edge-back-top")
+      if (edgeBackTop) {
+        edgeBackTop.setAttribute('x1', verts.topBackLeft.x.toString())
+        edgeBackTop.setAttribute('y1', verts.topBackLeft.y.toString())
+        edgeBackTop.setAttribute('x2', verts.topBackRight.x.toString())
+        edgeBackTop.setAttribute('y2', verts.topBackRight.y.toString())
+      }
       
       // Update vertices (spheres)
-      gsap.set("#vertex-bottom-front-left", {
-        attr: { cx: verts.bottomFrontLeft.x, cy: verts.bottomFrontLeft.y }
-      })
-      gsap.set("#vertex-bottom-front-right", {
-        attr: { cx: verts.bottomFrontRight.x, cy: verts.bottomFrontRight.y }
-      })
-      gsap.set("#vertex-bottom-back-left", {
-        attr: { cx: verts.bottomBackLeft.x, cy: verts.bottomBackLeft.y }
-      })
-      gsap.set("#vertex-bottom-back-right", {
-        attr: { cx: verts.bottomBackRight.x, cy: verts.bottomBackRight.y }
-      })
-      gsap.set("#vertex-top-front-left", {
-        attr: { cx: verts.topFrontLeft.x, cy: verts.topFrontLeft.y }
-      })
-      gsap.set("#vertex-top-front-right", {
-        attr: { cx: verts.topFrontRight.x, cy: verts.topFrontRight.y }
-      })
-      gsap.set("#vertex-top-back-left", {
-        attr: { cx: verts.topBackLeft.x, cy: verts.topBackLeft.y }
-      })
-      gsap.set("#vertex-top-back-right", {
-        attr: { cx: verts.topBackRight.x, cy: verts.topBackRight.y }
-      })
+      const vertexBottomFrontLeft = svg.querySelector(".vertex-bottom-front-left")
+      if (vertexBottomFrontLeft) {
+        vertexBottomFrontLeft.setAttribute('cx', verts.bottomFrontLeft.x.toString())
+        vertexBottomFrontLeft.setAttribute('cy', verts.bottomFrontLeft.y.toString())
+      }
+      
+      const vertexBottomFrontRight = svg.querySelector(".vertex-bottom-front-right")
+      if (vertexBottomFrontRight) {
+        vertexBottomFrontRight.setAttribute('cx', verts.bottomFrontRight.x.toString())
+        vertexBottomFrontRight.setAttribute('cy', verts.bottomFrontRight.y.toString())
+      }
+      
+      const vertexBottomBackLeft = svg.querySelector(".vertex-bottom-back-left")
+      if (vertexBottomBackLeft) {
+        vertexBottomBackLeft.setAttribute('cx', verts.bottomBackLeft.x.toString())
+        vertexBottomBackLeft.setAttribute('cy', verts.bottomBackLeft.y.toString())
+      }
+      
+      const vertexBottomBackRight = svg.querySelector(".vertex-bottom-back-right")
+      if (vertexBottomBackRight) {
+        vertexBottomBackRight.setAttribute('cx', verts.bottomBackRight.x.toString())
+        vertexBottomBackRight.setAttribute('cy', verts.bottomBackRight.y.toString())
+      }
+      
+      const vertexTopFrontLeft = svg.querySelector(".vertex-top-front-left")
+      if (vertexTopFrontLeft) {
+        vertexTopFrontLeft.setAttribute('cx', verts.topFrontLeft.x.toString())
+        vertexTopFrontLeft.setAttribute('cy', verts.topFrontLeft.y.toString())
+      }
+      
+      const vertexTopFrontRight = svg.querySelector(".vertex-top-front-right")
+      if (vertexTopFrontRight) {
+        vertexTopFrontRight.setAttribute('cx', verts.topFrontRight.x.toString())
+        vertexTopFrontRight.setAttribute('cy', verts.topFrontRight.y.toString())
+      }
+      
+      const vertexTopBackLeft = svg.querySelector(".vertex-top-back-left")
+      if (vertexTopBackLeft) {
+        vertexTopBackLeft.setAttribute('cx', verts.topBackLeft.x.toString())
+        vertexTopBackLeft.setAttribute('cy', verts.topBackLeft.y.toString())
+      }
+      
+      const vertexTopBackRight = svg.querySelector(".vertex-top-back-right")
+      if (vertexTopBackRight) {
+        vertexTopBackRight.setAttribute('cx', verts.topBackRight.x.toString())
+        vertexTopBackRight.setAttribute('cy', verts.topBackRight.y.toString())
+      }
       
       // Adjust opacity based on rotation angle for depth effect
       const normalizedAngle = rotationState.angle % 360
@@ -245,26 +270,34 @@ const LogoPurple: React.FC = () => {
         backOpacity = 0.4
       }
       
-      gsap.set("#back-edges", { opacity: backOpacity })
+      const backEdges = svg.querySelector(".back-edges")
+      if (backEdges) {
+        backEdges.setAttribute('opacity', backOpacity.toString())
+      }
     }
-    
-    // Create the rotation animation (reversed - counterclockwise)
-    const tween = gsap.to(rotationState, {
-      angle: -360,
-      duration: 8,
-      ease: "none",
-      repeat: -1,
-      onUpdate: updateCube
-    })
     
     // Initial update
     updateCube()
     
+    // Create the rotation animation only if animate prop is true
+    let tween: gsap.core.Tween | null = null
+    if (animate) {
+      tween = gsap.to(rotationState, {
+        angle: -360,
+        duration: 8,
+        ease: "none",
+        repeat: -1,
+        onUpdate: updateCube
+      })
+    }
+    
     // Cleanup function
     return () => {
-      tween.kill()
+      if (tween) {
+        tween.kill()
+      }
     }
-  }, [cubeSize, centerX, centerY])
+  }, [cubeSize, centerX, centerY, animate])
 
   return (
     <div ref={containerRef} className="inline-flex items-center justify-center">
@@ -276,240 +309,240 @@ const LogoPurple: React.FC = () => {
         className="isometric-cube-logo"
       >
         {/* Define groups for organization */}
-        <g id="cube-container">
+        <g className="cube-container">
           
           {/* Back/hidden edges (render first, lower opacity) */}
-          <g id="back-edges">
+          <g className="back-edges">
             {/* Back bottom edge */}
             <line
-              id="edge-back-bottom"
+              className="edge-back-bottom"
               x1={vertices.bottomBackLeft.x}
               y1={vertices.bottomBackLeft.y}
               x2={vertices.bottomBackRight.x}
               y2={vertices.bottomBackRight.y}
-              stroke="#4c1d95"
+              stroke="#8a08fc"
               strokeWidth={edgeWidth}
               opacity="0.3"
             />
             {/* Back left vertical edge */}
             <line
-              id="edge-back-vertical"
+              className="edge-back-vertical"
               x1={vertices.bottomBackLeft.x}
               y1={vertices.bottomBackLeft.y}
               x2={vertices.topBackLeft.x}
               y2={vertices.topBackLeft.y}
-              stroke="#4c1d95"
+              stroke="#8a08fc"
               strokeWidth={edgeWidth}
               opacity="0.3"
             />
             {/* Back top edge */}
             <line
-              id="edge-back-top"
+              className="edge-back-top"
               x1={vertices.topBackLeft.x}
               y1={vertices.topBackLeft.y}
               x2={vertices.topBackRight.x}
               y2={vertices.topBackRight.y}
-              stroke="#4c1d95"
+              stroke="#8a08fc"
               strokeWidth={edgeWidth}
               opacity="0.3"
             />
           </g>
 
           {/* Bottom face edges */}
-          <g id="bottom-edges">
+          <g className="bottom-edges">
             <line
-              id="edge-bottom-front"
+              className="edge-bottom-front"
               x1={vertices.bottomFrontLeft.x}
               y1={vertices.bottomFrontLeft.y}
               x2={vertices.bottomFrontRight.x}
               y2={vertices.bottomFrontRight.y}
-              stroke="#4c1d95"
+              stroke="#8a08fc"
               strokeWidth={edgeWidth}
             />
             <line
-              id="edge-bottom-right"
+              className="edge-bottom-right"
               x1={vertices.bottomFrontRight.x}
               y1={vertices.bottomFrontRight.y}
               x2={vertices.bottomBackRight.x}
               y2={vertices.bottomBackRight.y}
-              stroke="#4c1d95"
+              stroke="#8a08fc"
               strokeWidth={edgeWidth}
             />
             <line
-              id="edge-bottom-back"
+              className="edge-bottom-back"
               x1={vertices.bottomBackRight.x}
               y1={vertices.bottomBackRight.y}
               x2={vertices.bottomBackLeft.x}
               y2={vertices.bottomBackLeft.y}
-              stroke="#4c1d95"
+              stroke="#8a08fc"
               strokeWidth={edgeWidth}
             />
             <line
-              id="edge-bottom-left"
+              className="edge-bottom-left"
               x1={vertices.bottomBackLeft.x}
               y1={vertices.bottomBackLeft.y}
               x2={vertices.bottomFrontLeft.x}
               y2={vertices.bottomFrontLeft.y}
-              stroke="#4c1d95"
+              stroke="#8a08fc"
               strokeWidth={edgeWidth}
             />
           </g>
 
           {/* Vertical edges */}
-          <g id="vertical-edges">
+          <g className="vertical-edges">
             <line
-              id="edge-vertical-front-left"
+              className="edge-vertical-front-left"
               x1={vertices.bottomFrontLeft.x}
               y1={vertices.bottomFrontLeft.y}
               x2={vertices.topFrontLeft.x}
               y2={vertices.topFrontLeft.y}
-              stroke="#4c1d95"
+              stroke="#8a08fc"
               strokeWidth={edgeWidth}
             />
             <line
-              id="edge-vertical-front-right"
+              className="edge-vertical-front-right"
               x1={vertices.bottomFrontRight.x}
               y1={vertices.bottomFrontRight.y}
               x2={vertices.topFrontRight.x}
               y2={vertices.topFrontRight.y}
-              stroke="#4c1d95"
+              stroke="#8a08fc"
               strokeWidth={edgeWidth}
             />
             <line
-              id="edge-vertical-back-left"
+              className="edge-vertical-back-left"
               x1={vertices.bottomBackLeft.x}
               y1={vertices.bottomBackLeft.y}
               x2={vertices.topBackLeft.x}
               y2={vertices.topBackLeft.y}
-              stroke="#4c1d95"
+              stroke="#8a08fc"
               strokeWidth={edgeWidth}
             />
             <line
-              id="edge-vertical-back-right"
+              className="edge-vertical-back-right"
               x1={vertices.bottomBackRight.x}
               y1={vertices.bottomBackRight.y}
               x2={vertices.topBackRight.x}
               y2={vertices.topBackRight.y}
-              stroke="#4c1d95"
+              stroke="#8a08fc"
               strokeWidth={edgeWidth}
             />
           </g>
 
           {/* Top face edges */}
-          <g id="top-edges">
+          <g className="top-edges">
             <line
-              id="edge-top-front"
+              className="edge-top-front"
               x1={vertices.topFrontLeft.x}
               y1={vertices.topFrontLeft.y}
               x2={vertices.topFrontRight.x}
               y2={vertices.topFrontRight.y}
-              stroke="#4c1d95"
+              stroke="#8a08fc"
               strokeWidth={edgeWidth}
             />
             <line
-              id="edge-top-right"
+              className="edge-top-right"
               x1={vertices.topFrontRight.x}
               y1={vertices.topFrontRight.y}
               x2={vertices.topBackRight.x}
               y2={vertices.topBackRight.y}
-              stroke="#4c1d95"
+              stroke="#8a08fc"
               strokeWidth={edgeWidth}
             />
             <line
-              id="edge-top-back"
+              className="edge-top-back"
               x1={vertices.topBackRight.x}
               y1={vertices.topBackRight.y}
               x2={vertices.topBackLeft.x}
               y2={vertices.topBackLeft.y}
-              stroke="#4c1d95"
+              stroke="#8a08fc"
               strokeWidth={edgeWidth}
             />
             <line
-              id="edge-top-left"
+              className="edge-top-left"
               x1={vertices.topBackLeft.x}
               y1={vertices.topBackLeft.y}
               x2={vertices.topFrontLeft.x}
               y2={vertices.topFrontLeft.y}
-              stroke="#4c1d95"
+              stroke="#8a08fc"
               strokeWidth={edgeWidth}
             />
           </g>
 
           {/* Vertices (white border, black fill spheres) */}
-          <g id="vertices">
+          <g className="vertices">
             {/* Bottom vertices */}
             <circle
-              id="vertex-bottom-front-left"
+              className="vertex-bottom-front-left"
               cx={vertices.bottomFrontLeft.x}
               cy={vertices.bottomFrontLeft.y}
               r={sphereRadius}
-              fill="#2e1065"
-              stroke="#4c1d95"
+              fill="#8a08fc"
+              stroke="#8a08fc"
               strokeWidth={sphereBorder}
             />
             <circle
-              id="vertex-bottom-front-right"
+              className="vertex-bottom-front-right"
               cx={vertices.bottomFrontRight.x}
               cy={vertices.bottomFrontRight.y}
               r={sphereRadius}
-              fill="#2e1065"
-              stroke="#4c1d95"
+              fill="#8a08fc"
+              stroke="#8a08fc"
               strokeWidth={sphereBorder}
             />
             <circle
-              id="vertex-bottom-back-left"
+              className="vertex-bottom-back-left"
               cx={vertices.bottomBackLeft.x}
               cy={vertices.bottomBackLeft.y}
               r={sphereRadius}
-              fill="#2e1065"
-              stroke="#4c1d95"
+              fill="#8a08fc"
+              stroke="#8a08fc"
               strokeWidth={sphereBorder}
             />
             <circle
-              id="vertex-bottom-back-right"
+              className="vertex-bottom-back-right"
               cx={vertices.bottomBackRight.x}
               cy={vertices.bottomBackRight.y}
               r={sphereRadius}
-              fill="#2e1065"
-              stroke="#4c1d95"
+              fill="#8a08fc"
+              stroke="#8a08fc"
               strokeWidth={sphereBorder}
             />
             
             {/* Top vertices */}
             <circle
-              id="vertex-top-front-left"
+              className="vertex-top-front-left"
               cx={vertices.topFrontLeft.x}
               cy={vertices.topFrontLeft.y}
               r={sphereRadius}
-              fill="#2e1065"
-              stroke="#4c1d95"
+              fill="#8a08fc"
+              stroke="#8a08fc"
               strokeWidth={sphereBorder}
             />
             <circle
-              id="vertex-top-front-right"
+              className="vertex-top-front-right"
               cx={vertices.topFrontRight.x}
               cy={vertices.topFrontRight.y}
               r={sphereRadius}
-              fill="#2e1065"
-              stroke="#4c1d95"
+              fill="#8a08fc"
+              stroke="#8a08fc"
               strokeWidth={sphereBorder}
             />
             <circle
-              id="vertex-top-back-left"
+              className="vertex-top-back-left"
               cx={vertices.topBackLeft.x}
               cy={vertices.topBackLeft.y}
               r={sphereRadius}
-              fill="#2e1065"
-              stroke="#4c1d95"
+              fill="#8a08fc"
+              stroke="#8a08fc"
               strokeWidth={sphereBorder}
             />
             <circle
-              id="vertex-top-back-right"
+              className="vertex-top-back-right"
               cx={vertices.topBackRight.x}
               cy={vertices.topBackRight.y}
               r={sphereRadius}
-              fill="#2e1065"
-              stroke="#4c1d95"
+              fill="#8a08fc"
+              stroke="#8a08fc"
               strokeWidth={sphereBorder}
             />
           </g>

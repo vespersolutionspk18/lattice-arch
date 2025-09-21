@@ -31,7 +31,7 @@ const itemVariants: Variants = {
 const FaqItem = ({ question, answer, isOpen, onClick, index }: { question: string, answer: string, isOpen: boolean, onClick: () => void, index: number }) => {
   return (
     <motion.div 
-      className="border border-stone-900 last:border-0 px-5 rounded-3xl gap-5 mt-5 shadow-lg shadow-purple-500/12"
+      className="border border-stone-900 last:border-0 px-5 rounded-3xl gap-5 mt-5 shadow-lg shadow-[#8a08fc]/12"
       custom={index}
       initial="hidden"
       whileInView="visible"
@@ -45,7 +45,7 @@ const FaqItem = ({ question, answer, isOpen, onClick, index }: { question: strin
       >
         <h3 className="text-base md:text-lg lg:text-xl text-white/85 font-light pr-4 md:pr-6 lg:pr-8">{question}</h3>
        
-          <div className="flex items-center justify-center rounded-full p-1 shadow-lg shadow-purple-500/28">
+          <div className="flex items-center justify-center rounded-full p-1 shadow-lg shadow-[#8a08fc]/28">
              <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
@@ -120,7 +120,7 @@ const Faq: React.FC<FaqProps> = ({ faqs = [], title = "Frequently Asked Question
       variants={containerVariants}
     >
       <motion.div 
-       className="w-fit rounded-full border-1 border-purple-900/65 bg-[radial-gradient(ellipse_at_50%_200%,_#4c1d95_0%,_#0D0D0D_60%)] hover:bg-[radial-gradient(ellipse_at_50%_150%,_#4c1d95_0%,_#0D0D0D_60%)] transition-all duration-200 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base lg:text-lg text-white/85"
+       className="w-fit rounded-full border-1 border-[#8a08fc]/40 bg-[radial-gradient(ellipse_at_50%_200%,_#8a08fc_0%,_#0D0D0D_60%)] hover:bg-[radial-gradient(ellipse_at_50%_150%,_#8a08fc_0%,_#0D0D0D_60%)] transition-all duration-200 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base lg:text-lg text-white/85"
         variants={titleVariants}
         whileHover={{ scale: 1.05 }}
       >

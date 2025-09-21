@@ -139,10 +139,10 @@ export default function AboutPage() {
             height={3}
             baseWidth={5}
             scale={3}
-            hueShift={280}
-            colorFrequency={0.8}
+            hueShift={270}
+            colorFrequency={0.5}
             noise={0}
-            glow={0.6}
+            glow={0.9}
             suspendWhenOffscreen={true}
           />
         </div>
@@ -196,7 +196,7 @@ export default function AboutPage() {
             return (
               <motion.div
                 key={stat.label}
-                className="flex flex-col items-center text-center p-6 rounded-2xl bg-[radial-gradient(ellipse_at_50%_150%,_#4c1d95_0%,_#000000_70%)] border border-purple-950/50"
+                className="flex flex-col items-center text-center p-6 rounded-2xl bg-[radial-gradient(ellipse_at_50%_150%,_#8a08fc_0%,_#000000_70%)] border border-[#8a08fc]/30"
                 custom={index}
                 variants={cardVariants}
                 whileHover={{ scale: 1.05 }}
@@ -205,7 +205,7 @@ export default function AboutPage() {
                   variants={iconVariants}
                   className="mb-4"
                 >
-                  <Icon className="text-3xl text-purple-400" />
+                  <Icon className="text-3xl text-[#8a08fc]" />
                 </motion.div>
                 <h3 className="text-3xl md:text-4xl font-bold text-white mb-2">{stat.value}</h3>
                 <p className="text-sm text-stone-400">{stat.label}</p>
@@ -224,7 +224,7 @@ export default function AboutPage() {
         variants={containerVariants}
       >
         <motion.div
-          className="w-fit rounded-full border-1 border-purple-900/65 bg-[radial-gradient(ellipse_at_50%_200%,_#4c1d95_0%,_#0D0D0D_60%)] hover:bg-[radial-gradient(ellipse_at_50%_150%,_#4c1d95_0%,_#0D0D0D_60%)] transition-all duration-200 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base lg:text-lg text-white/85 mx-auto mb-8"
+          className="w-fit rounded-full border-1 border-[#8a08fc]/40 bg-[radial-gradient(ellipse_at_50%_200%,_#8a08fc_0%,_#0D0D0D_60%)] hover:bg-[radial-gradient(ellipse_at_50%_150%,_#8a08fc_0%,_#0D0D0D_60%)] transition-all duration-200 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base lg:text-lg text-white/85 mx-auto mb-8"
           variants={itemVariants}
           whileHover={{ scale: 1.05 }}
         >
@@ -284,8 +284,8 @@ export default function AboutPage() {
                 custom={index}
                 variants={cardVariants}
               >
-                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-purple-600/20 border border-purple-600/40 flex items-center justify-center">
-                  <span className="text-purple-400 font-bold text-sm">{milestone.year}</span>
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-[#8a08fc]/20 border border-[#8a08fc]/40 flex items-center justify-center">
+                  <span className="text-[#8a08fc] font-bold text-sm">{milestone.year}</span>
                 </div>
                 <div className="flex-1 pt-3">
                   <p className="text-stone-300">{milestone.event}</p>
@@ -305,7 +305,7 @@ export default function AboutPage() {
         variants={containerVariants}
       >
         <motion.div
-          className="w-fit rounded-full border-1 border-purple-900/65 bg-[radial-gradient(ellipse_at_50%_200%,_#4c1d95_0%,_#0D0D0D_60%)] hover:bg-[radial-gradient(ellipse_at_50%_150%,_#4c1d95_0%,_#0D0D0D_60%)] transition-all duration-200 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base lg:text-lg text-white/85 mx-auto mb-8"
+          className="w-fit rounded-full border-1 border-[#8a08fc]/40 bg-[radial-gradient(ellipse_at_50%_200%,_#8a08fc_0%,_#0D0D0D_60%)] hover:bg-[radial-gradient(ellipse_at_50%_150%,_#8a08fc_0%,_#0D0D0D_60%)] transition-all duration-200 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base lg:text-lg text-white/85 mx-auto mb-8"
           variants={itemVariants}
           whileHover={{ scale: 1.05 }}
         >
@@ -327,7 +327,7 @@ export default function AboutPage() {
             return (
               <motion.div
                 key={value.title}
-                className="relative p-6 rounded-2xl bg-[radial-gradient(ellipse_at_50%_150%,_#4c1d95_0%,_#000000_70%)] border border-purple-950/50 overflow-hidden"
+                className="relative p-6 rounded-2xl bg-[radial-gradient(ellipse_at_50%_150%,_#8a08fc_0%,_#000000_70%)] border border-[#8a08fc]/30 overflow-hidden"
                 custom={index}
                 variants={cardVariants}
                 onMouseEnter={() => setIsHovered(true)}
@@ -338,8 +338,8 @@ export default function AboutPage() {
                   className="flex items-center gap-3 mb-4"
                   variants={iconVariants}
                 >
-                  <div className="p-2 rounded-full bg-purple-600/20">
-                    <Icon className="text-2xl text-purple-400" />
+                  <div className="p-2 rounded-full bg-[#8a08fc]/20">
+                    <Icon className="text-2xl text-[#8a08fc]" />
                   </div>
                   <h3 className="text-xl font-semibold text-white">{value.title}</h3>
                 </motion.div>
@@ -351,7 +351,7 @@ export default function AboutPage() {
                     duration={3}
                     size={200}
                     delay={0}
-                    className="from-transparent via-purple-500 to-transparent"
+                    className="from-transparent via-[#8a08fc] to-transparent"
                   />
                 )}
               </motion.div>
@@ -369,7 +369,7 @@ export default function AboutPage() {
         variants={containerVariants}
       >
         <motion.div
-          className="w-fit rounded-full border-1 border-purple-900/65 bg-[radial-gradient(ellipse_at_50%_200%,_#4c1d95_0%,_#0D0D0D_60%)] hover:bg-[radial-gradient(ellipse_at_50%_150%,_#4c1d95_0%,_#0D0D0D_60%)] transition-all duration-200 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base lg:text-lg text-white/85 mx-auto mb-8"
+          className="w-fit rounded-full border-1 border-[#8a08fc]/40 bg-[radial-gradient(ellipse_at_50%_200%,_#8a08fc_0%,_#0D0D0D_60%)] hover:bg-[radial-gradient(ellipse_at_50%_150%,_#8a08fc_0%,_#0D0D0D_60%)] transition-all duration-200 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base lg:text-lg text-white/85 mx-auto mb-8"
           variants={itemVariants}
           whileHover={{ scale: 1.05 }}
         >
@@ -385,46 +385,46 @@ export default function AboutPage() {
         
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
           <motion.div
-            className="relative p-8 rounded-3xl bg-[radial-gradient(ellipse_at_50%_150%,_#4c1d95_0%,_#000000_70%)] border border-purple-950/50 overflow-hidden"
+            className="relative p-8 rounded-3xl bg-[radial-gradient(ellipse_at_50%_150%,_#8a08fc_0%,_#000000_70%)] border border-[#8a08fc]/30 overflow-hidden"
             variants={itemVariants}
             whileHover={{ scale: 1.02 }}
           >
-            <HiSparkles className="text-4xl text-purple-400 mb-4" />
+            <HiSparkles className="text-4xl text-[#8a08fc] mb-4" />
             <h3 className="text-2xl font-semibold text-white mb-4">Technology-Driven Design</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
-                <FaRocket className="text-purple-400 mt-1 flex-shrink-0" />
+                <FaRocket className="text-[#8a08fc] mt-1 flex-shrink-0" />
                 <span className="text-stone-300">AI-powered design optimization for maximum efficiency</span>
               </li>
               <li className="flex items-start gap-2">
-                <FaRocket className="text-purple-400 mt-1 flex-shrink-0" />
+                <FaRocket className="text-[#8a08fc] mt-1 flex-shrink-0" />
                 <span className="text-stone-300">VR walkthroughs before construction begins</span>
               </li>
               <li className="flex items-start gap-2">
-                <FaRocket className="text-purple-400 mt-1 flex-shrink-0" />
+                <FaRocket className="text-[#8a08fc] mt-1 flex-shrink-0" />
                 <span className="text-stone-300">Real-time collaboration through our digital platform</span>
               </li>
             </ul>
           </motion.div>
           
           <motion.div
-            className="relative p-8 rounded-3xl bg-[radial-gradient(ellipse_at_50%_150%,_#4c1d95_0%,_#000000_70%)] border border-purple-950/50 overflow-hidden"
+            className="relative p-8 rounded-3xl bg-[radial-gradient(ellipse_at_50%_150%,_#8a08fc_0%,_#000000_70%)] border border-[#8a08fc]/30 overflow-hidden"
             variants={itemVariants}
             whileHover={{ scale: 1.02 }}
           >
-            <FaAward className="text-4xl text-purple-400 mb-4" />
+            <FaAward className="text-4xl text-[#8a08fc] mb-4" />
             <h3 className="text-2xl font-semibold text-white mb-4">Unmatched Service</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
-                <FaRocket className="text-purple-400 mt-1 flex-shrink-0" />
+                <FaRocket className="text-[#8a08fc] mt-1 flex-shrink-0" />
                 <span className="text-stone-300">48-hour design turnaround on standard projects</span>
               </li>
               <li className="flex items-start gap-2">
-                <FaRocket className="text-purple-400 mt-1 flex-shrink-0" />
+                <FaRocket className="text-[#8a08fc] mt-1 flex-shrink-0" />
                 <span className="text-stone-300">Unlimited revisions until you're satisfied</span>
               </li>
               <li className="flex items-start gap-2">
-                <FaRocket className="text-purple-400 mt-1 flex-shrink-0" />
+                <FaRocket className="text-[#8a08fc] mt-1 flex-shrink-0" />
                 <span className="text-stone-300">24/7 support throughout your project</span>
               </li>
             </ul>
@@ -441,7 +441,7 @@ export default function AboutPage() {
         variants={containerVariants}
       >
         <motion.div
-          className="w-fit rounded-full border-1 border-purple-900/65 bg-[radial-gradient(ellipse_at_50%_200%,_#4c1d95_0%,_#0D0D0D_60%)] hover:bg-[radial-gradient(ellipse_at_50%_150%,_#4c1d95_0%,_#0D0D0D_60%)] transition-all duration-200 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base lg:text-lg text-white/85 mx-auto mb-8"
+          className="w-fit rounded-full border-1 border-[#8a08fc]/40 bg-[radial-gradient(ellipse_at_50%_200%,_#8a08fc_0%,_#0D0D0D_60%)] hover:bg-[radial-gradient(ellipse_at_50%_150%,_#8a08fc_0%,_#0D0D0D_60%)] transition-all duration-200 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base lg:text-lg text-white/85 mx-auto mb-8"
           variants={itemVariants}
           whileHover={{ scale: 1.05 }}
         >
@@ -455,29 +455,50 @@ export default function AboutPage() {
           A seamless journey from vision to reality
         </motion.h2>
         
-        <div className="max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {[
             { step: "01", title: "Discovery", description: "We listen to your ideas, understand your needs, and explore possibilities together." },
             { step: "02", title: "Design", description: "Our team creates innovative concepts using AI and traditional design principles." },
             { step: "03", title: "Refine", description: "We iterate based on your feedback until the design exceeds expectations." },
             { step: "04", title: "Deliver", description: "Final designs are delivered with all documentation needed for construction." },
-            { step: "05", title: "Support", description: "We remain your partner throughout construction and beyond." }
-          ].map((item, index) => (
-            <motion.div
-              key={item.step}
-              className="flex gap-6 items-start mb-8"
-              custom={index}
-              variants={cardVariants}
-            >
-              <div className="flex-shrink-0 w-16 h-16 rounded-full bg-gradient-to-br from-purple-600 to-violet-600 flex items-center justify-center">
-                <span className="text-white font-bold text-lg">{item.step}</span>
-              </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+            { step: "05", title: "Support", description: "We remain your partner throughout construction and beyond." },
+            { step: "06", title: "Evolve", description: "Post-project analysis and continuous improvement for future endeavors." }
+          ].map((item, index) => {
+            const [isHovered, setIsHovered] = React.useState(false)
+            
+            return (
+              <motion.div
+                key={item.step}
+                className="relative p-6 rounded-2xl bg-[radial-gradient(ellipse_at_50%_150%,_#8a08fc_0%,_#000000_70%)] border border-[#8a08fc]/30 overflow-hidden"
+                custom={index}
+                variants={cardVariants}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                whileHover={{ scale: 1.03 }}
+              >
+                <motion.div
+                  className="flex items-center gap-3 mb-4"
+                  variants={iconVariants}
+                >
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#8a08fc] to-violet-600 flex items-center justify-center">
+                    <span className="text-white font-bold text-lg">{item.step}</span>
+                  </div>
+                  <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+                </motion.div>
+                
                 <p className="text-stone-400">{item.description}</p>
-              </div>
-            </motion.div>
-          ))}
+                
+                {isHovered && (
+                  <BorderBeam
+                    duration={3}
+                    size={200}
+                    delay={0}
+                    className="from-transparent via-[#8a08fc] to-transparent"
+                  />
+                )}
+              </motion.div>
+            )
+          })}
         </div>
       </motion.section>
 

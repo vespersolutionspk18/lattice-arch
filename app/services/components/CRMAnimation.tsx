@@ -18,7 +18,7 @@ const CRMAnimation = () => {
     <div className="relative w-full h-full min-h-[400px] flex items-center justify-center">
       {/* Central Dashboard */}
       <motion.div
-        className="relative w-64 h-48 bg-gradient-to-br from-purple-700 to-purple-900 rounded-lg shadow-2xl flex items-center justify-center"
+        className="relative w-64 h-48 bg-gradient-to-br from-[#8a08fc] to-[#8a08fc] rounded-lg shadow-2xl flex items-center justify-center"
         animate={{
           y: [0, -10, 0],
         }}
@@ -72,7 +72,7 @@ const CRMAnimation = () => {
             }}
           >
             <motion.div
-              className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center"
+              className="w-12 h-12 bg-[#8a08fc] rounded-full flex items-center justify-center"
               whileHover={{ scale: 1.2 }}
               animate={{
                 scale: [1, 1.1, 1],
@@ -85,7 +85,7 @@ const CRMAnimation = () => {
             >
               <Icon className="text-white text-xl" />
             </motion.div>
-            <span className="text-xs text-purple-300 mt-1">{feature.label}</span>
+            <span className="text-xs text-[#8a08fc] mt-1">{feature.label}</span>
           </motion.div>
         )
       })}
@@ -98,7 +98,7 @@ const CRMAnimation = () => {
         return (
           <motion.div
             key={`line-${i}`}
-            className="absolute w-0.5 bg-gradient-to-b from-purple-500 to-transparent"
+            className="absolute w-0.5 bg-gradient-to-b from-[#8a08fc] to-transparent"
             style={{
               height: radius,
               transformOrigin: 'top',

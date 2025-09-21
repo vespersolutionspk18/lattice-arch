@@ -65,6 +65,7 @@ const OurServices = () => {
       title: "Floor Plans & Front Elevation",
       price: "$2,995",
       description: "Professional architectural layouts and elevation designs that optimize space.",
+      link: "/services/floor-plans-and-front-elevation",
       includes: [
         "Custom floor plan design",
         "3D elevation rendering",
@@ -79,6 +80,7 @@ const OurServices = () => {
       title: "3D Rendering",
       price: "$1,495",
       description: "Photorealistic 3D visualizations that bring your architectural vision to life.",
+      link: "/services/3d-rendering",
       includes: [
         "High-resolution 3D renders",
         "Multiple viewing angles",
@@ -93,6 +95,7 @@ const OurServices = () => {
       title: "AI Remodeller",
       price: "$4,995",
       description: "AI-powered design suggestions and remodeling solutions for modern transformation.",
+      link: "/services/ai-remodeller",
       includes: [
         "AI design generation",
         "Space optimization",
@@ -107,6 +110,7 @@ const OurServices = () => {
       title: "CRM for Contractors",
       price: "$199/mo",
       description: "Comprehensive CRM system designed specifically for contractors and remodellers.",
+      link: "/services/crm-for-contractors",
       includes: [
         "Client management",
         "Project tracking",
@@ -121,6 +125,7 @@ const OurServices = () => {
       title: "Material Showroom",
       price: "Custom",
       description: "Extensive showroom with premium materials and expert sourcing services.",
+      link: "/services/material-showroom",
       includes: [
         "Premium material access",
         "Wholesale pricing",
@@ -135,6 +140,7 @@ const OurServices = () => {
       title: "Free Website",
       price: "$0",
       description: "Professional website included free with our CRM package subscription.",
+      link: "/services/free-website",
       includes: [
         "Custom domain setup",
         "Responsive design",
@@ -153,7 +159,7 @@ const OurServices = () => {
     variants={containerVariants}
    >
       <motion.div 
-        className="w-fit rounded-full border-1 border-purple-900/65 bg-[radial-gradient(ellipse_at_50%_200%,_#4c1d95_0%,_#0D0D0D_60%)] hover:bg-[radial-gradient(ellipse_at_50%_150%,_#4c1d95_0%,_#0D0D0D_60%)] transition-all duration-200 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base lg:text-lg text-white/85"
+        className="w-fit rounded-full border-1 border-[#8a08fc]/40 bg-[radial-gradient(ellipse_at_50%_200%,_#8a08fc_0%,_#0D0D0D_60%)] hover:bg-[radial-gradient(ellipse_at_50%_150%,_#8a08fc_0%,_#0D0D0D_60%)] transition-all duration-200 flex items-center justify-center px-3 py-1.5 md:px-4 md:py-2 text-sm md:text-base lg:text-lg text-white/85"
         variants={itemVariants}
         whileHover={{ scale: 1.05 }}
       >
@@ -178,7 +184,7 @@ const OurServices = () => {
             return (
               <motion.div
                 key={service.title}
-                className="relative flex flex-col p-4 md:p-5 lg:p-6 rounded-2xl md:rounded-3xl lg:rounded-4xl bg-[radial-gradient(ellipse_at_50%_150%,_#4c1d95_0%,_#000000_70%)] border-[1px] border-purple-950/50 w-full overflow-hidden group"
+                className="relative flex flex-col p-4 md:p-5 lg:p-6 rounded-2xl md:rounded-3xl lg:rounded-4xl bg-[radial-gradient(ellipse_at_50%_150%,_#8a08fc_0%,_#000000_70%)] border-[1px] border-[#8a08fc]/30 w-full overflow-hidden group"
                 custom={index}
                 variants={cardVariants}
                 onMouseEnter={() => setIsHovered(true)}
@@ -217,7 +223,7 @@ const OurServices = () => {
                   </motion.p>
                 </div>
                 
-                <div className="my-4 h-[1px] bg-purple-800/30" />
+                <div className="my-4 h-[1px] bg-[#8a08fc]/30" />
                 
                 <div className="flex flex-col gap-3 flex-1">
                   <motion.h6 className="text-sm md:text-base text-white/80 font-medium">
@@ -226,7 +232,7 @@ const OurServices = () => {
                   <ul className="flex flex-col gap-2">
                     {service.includes.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <svg className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-4 h-4 text-[#8a08fc] mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <span className="text-xs md:text-sm text-white/70">{item}</span>
@@ -239,6 +245,7 @@ const OurServices = () => {
                   className="w-full mt-4 py-3 px-4 bg-white/85 text-black text-xl rounded-lg hover:bg-gray-100 transition-colors hover:cursor-pointer"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  onClick={() => window.location.href = service.link}
                 >
                   Get Started
                 </motion.button>
@@ -248,14 +255,14 @@ const OurServices = () => {
                       duration={3}
                       size={300}
                       delay={0}
-                      className="from-transparent via-purple-500 to-transparent"
+                      className="from-transparent via-[#8a08fc] to-transparent"
                     />
                     <BorderBeam
                       duration={3}
                       delay={1.5}
                       size={300}
                       borderWidth={2}
-                      className="from-transparent via-violet-600 to-transparent"
+                      className="from-transparent via-[#8a08fc] to-transparent"
                       reverse
                     />
                   </>
@@ -271,7 +278,7 @@ const OurServices = () => {
             return (
               <motion.div
                 key={service.title}
-                className="relative flex flex-col p-4 md:p-5 lg:p-6 rounded-2xl md:rounded-3xl lg:rounded-4xl bg-[radial-gradient(ellipse_at_50%_150%,_#4c1d95_0%,_#000000_70%)] border-[1px] border-purple-950/50 w-full overflow-hidden group"
+                className="relative flex flex-col p-4 md:p-5 lg:p-6 rounded-2xl md:rounded-3xl lg:rounded-4xl bg-[radial-gradient(ellipse_at_50%_150%,_#8a08fc_0%,_#000000_70%)] border-[1px] border-[#8a08fc]/30 w-full overflow-hidden group"
                 custom={index + 3}
                 variants={cardVariants}
                 onMouseEnter={() => setIsHovered(true)}
@@ -310,7 +317,7 @@ const OurServices = () => {
                   </motion.p>
                 </div>
                 
-                <div className="my-4 h-[1px] bg-purple-800/30" />
+                <div className="my-4 h-[1px] bg-[#8a08fc]/30" />
                 
                 <div className="flex flex-col gap-3 flex-1">
                   <motion.h6 className="text-sm md:text-base text-white/80 font-medium">
@@ -319,7 +326,7 @@ const OurServices = () => {
                   <ul className="flex flex-col gap-2">
                     {service.includes.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2">
-                        <svg className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-4 h-4 text-[#8a08fc] mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <span className="text-xs md:text-sm text-white/70">{item}</span>
@@ -332,6 +339,7 @@ const OurServices = () => {
                   className="w-full mt-4 py-3 px-4 bg-white/85 text-black text-xl rounded-lg hover:bg-gray-100 transition-colors hover:cursor-pointer"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  onClick={() => window.location.href = service.link}
                 >
                   Get Started
                 </motion.button>
@@ -341,14 +349,14 @@ const OurServices = () => {
                       duration={3}
                       size={300}
                       delay={0}
-                      className="from-transparent via-purple-500 to-transparent"
+                      className="from-transparent via-[#8a08fc] to-transparent"
                     />
                     <BorderBeam
                       duration={3}
                       delay={1.5}
                       size={300}
                       borderWidth={2}
-                      className="from-transparent via-violet-600 to-transparent"
+                      className="from-transparent via-[#8a08fc] to-transparent"
                       reverse
                     />
                   </>

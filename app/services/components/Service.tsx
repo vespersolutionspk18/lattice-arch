@@ -126,7 +126,7 @@ const Service: React.FC<ServiceProps> = ({
         >
           {sectionTitle && (
             <motion.div 
-              className="w-fit rounded-full border-1 border-purple-900/65 bg-[radial-gradient(ellipse_at_50%_200%,_#4c1d95_0%,_#0D0D0D_60%)] hover:bg-[radial-gradient(ellipse_at_50%_150%,_#4c1d95_0%,_#0D0D0D_60%)] transition-all duration-200 flex items-center justify-center px-4 py-2 text-sm md:text-base text-white/85"
+              className="w-fit rounded-full border-1 border-[#8a08fc]/40 bg-[radial-gradient(ellipse_at_50%_200%,_#8a08fc_0%,_#0D0D0D_60%)] hover:bg-[radial-gradient(ellipse_at_50%_150%,_#8a08fc_0%,_#0D0D0D_60%)] transition-all duration-200 flex items-center justify-center px-4 py-2 text-sm md:text-base text-white/85"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -166,12 +166,12 @@ const Service: React.FC<ServiceProps> = ({
                   className="flex items-center gap-3"
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-purple-900/30 border border-purple-700/50">
-                    <span className="text-purple-400 font-bold text-lg md:text-xl">
+                  <div className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#8a08fc]/30 border border-[#8a08fc]/50">
+                    <span className="text-[#8a08fc] font-bold text-lg md:text-xl">
                       {(index + 1).toString().padStart(2, '0')}
                     </span>
                   </div>
-                  <div className="h-[1px] w-12 bg-purple-700/30" />
+                  <div className="h-[1px] w-12 bg-[#8a08fc]/30" />
                 </motion.div>
 
                 {/* Heading */}
@@ -202,7 +202,7 @@ const Service: React.FC<ServiceProps> = ({
                         transition={{ delay: 0.4 + idx * 0.1 }}
                       >
                         <svg 
-                          className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" 
+                          className="w-5 h-5 text-[#8a08fc] mt-0.5 flex-shrink-0" 
                           fill="none" 
                           viewBox="0 0 24 24" 
                           stroke="currentColor"

@@ -200,8 +200,8 @@ const Prism: React.FC<PrismProps> = ({
         // Suppress green channel but keep some
         col.g *= 0.4; // Reduce green to 40% of its original value
         
-        // Bias towards purple #4c1d95 (0.298, 0.114, 0.584) with more red
-        vec3 targetPurple = vec3(0.4, 0.15, 0.55); // Added more red, slightly less blue
+        // Bias towards purple #8a08fc (0.541, 0.031, 0.988) with more vibrant purple
+        vec3 targetPurple = vec3(0.541, 0.031, 0.988); // New purple color #8a08fc
         col = mix(col, targetPurple, 0.35); // Reduced mix for less purple dominance
         
         // Add white to brighten

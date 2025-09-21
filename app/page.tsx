@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect } from 'react'
 import Header from "./components/Header";
 import Slider from "./Homecomponents/Slider"
 import Hero from "./Homecomponents/Hero";
@@ -38,6 +41,15 @@ const homeFaqs = [
 ]
 
 export default function Home() {
+  useEffect(() => {
+    // Check if there's a hash in the URL to scroll to
+    if (window.location.hash === '#services') {
+      setTimeout(() => {
+        document.getElementById('services here')?.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+    }
+  }, [])
+
   return (
     <>
     <Header />

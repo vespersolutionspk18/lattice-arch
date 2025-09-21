@@ -3,10 +3,14 @@
 import React from 'react'
 import LogoPurple from './LogoPurple'
 
-const LogoPurpleSmall: React.FC = () => {
+interface LogoPurpleSmallProps {
+  animate?: boolean
+}
+
+const LogoPurpleSmall: React.FC<LogoPurpleSmallProps> = ({ animate = true }) => {
   return (
     <div style={{ transform: 'scale(0.6)', transformOrigin: 'center' }}>
-      <LogoPurple />
+      <LogoPurple animate={animate} />
     </div>
   )
 }

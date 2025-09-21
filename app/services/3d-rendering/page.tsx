@@ -4,7 +4,7 @@ import Footer from '@/app/components/Footer'
 import CTA from '@/app/components/CTA'
 import Hero from '../components/Hero'
 import Service from '../components/Service'
-import Rendering3DAnimation from '../components/Rendering3DAnimation'
+import ModelViewer3D from '@/app/components/ModelViewer3D'
 import Faq from '@/app/Homecomponents/Faq'
 
 const page = () => {
@@ -100,7 +100,7 @@ const page = () => {
         description="Experience the power of photorealistic 3D rendering that transforms architectural concepts into stunning visual realities. Our advanced visualization technology creates immersive experiences that help clients see, feel, and understand spaces before they're built."
         buttonText="View Portfolio"
         buttonRoute="/portfolio"
-        rightContent={<Rendering3DAnimation />}
+        rightContent={<ModelViewer3D />}
       />
       <Service
         sectionTitle="3D Rendering Services"

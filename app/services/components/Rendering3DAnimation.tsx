@@ -21,50 +21,58 @@ const Rendering3DAnimation = () => {
           }}
         >
           {/* Front face */}
-          <div className="absolute w-64 h-64 bg-gradient-to-br from-purple-600 to-purple-800 border border-purple-400/30 rounded-lg transform-gpu translate-z-32 flex items-center justify-center">
+          <div className="absolute w-64 h-64 bg-gradient-to-br from-[#8a08fc] to-[#8a08fc] border border-[#8a08fc]/30 rounded-lg transform-gpu translate-z-32 flex items-center justify-center">
             <div className="text-white text-6xl font-bold opacity-20">3D</div>
           </div>
           
           {/* Back face */}
-          <div className="absolute w-64 h-64 bg-gradient-to-br from-purple-700 to-purple-900 border border-purple-400/30 rounded-lg transform-gpu rotate-y-180 -translate-z-32" />
+          <div className="absolute w-64 h-64 bg-gradient-to-br from-[#8a08fc] to-[#8a08fc] border border-[#8a08fc]/30 rounded-lg transform-gpu rotate-y-180 -translate-z-32" />
           
           {/* Right face */}
-          <div className="absolute w-64 h-64 bg-gradient-to-br from-purple-600 to-purple-800 border border-purple-400/30 rounded-lg transform-gpu rotate-y-90 translate-x-32" />
+          <div className="absolute w-64 h-64 bg-gradient-to-br from-[#8a08fc] to-[#8a08fc] border border-[#8a08fc]/30 rounded-lg transform-gpu rotate-y-90 translate-x-32" />
           
           {/* Left face */}
-          <div className="absolute w-64 h-64 bg-gradient-to-br from-purple-700 to-purple-900 border border-purple-400/30 rounded-lg transform-gpu -rotate-y-90 -translate-x-32" />
+          <div className="absolute w-64 h-64 bg-gradient-to-br from-[#8a08fc] to-[#8a08fc] border border-[#8a08fc]/30 rounded-lg transform-gpu -rotate-y-90 -translate-x-32" />
           
           {/* Top face */}
-          <div className="absolute w-64 h-64 bg-gradient-to-br from-purple-500 to-purple-700 border border-purple-400/30 rounded-lg transform-gpu rotate-x-90 -translate-y-32" />
+          <div className="absolute w-64 h-64 bg-gradient-to-br from-[#8a08fc] to-[#8a08fc] border border-[#8a08fc]/30 rounded-lg transform-gpu rotate-x-90 -translate-y-32" />
           
           {/* Bottom face */}
-          <div className="absolute w-64 h-64 bg-gradient-to-br from-purple-800 to-purple-950 border border-purple-400/30 rounded-lg transform-gpu -rotate-x-90 translate-y-32" />
+          <div className="absolute w-64 h-64 bg-gradient-to-br from-[#8a08fc] to-[#8a08fc] border border-[#8a08fc]/30 rounded-lg transform-gpu -rotate-x-90 translate-y-32" />
         </motion.div>
       </div>
 
       {/* Floating particles */}
-      {[...Array(6)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute w-2 h-2 bg-purple-400 rounded-full"
-          initial={{ 
-            x: Math.random() * 200 - 100,
-            y: Math.random() * 200 - 100,
-            opacity: 0 
-          }}
-          animate={{
-            x: [null, Math.random() * 200 - 100],
-            y: [null, Math.random() * 200 - 100],
-            opacity: [0, 1, 1, 0]
-          }}
-          transition={{
-            duration: 4,
-            delay: i * 0.5,
-            repeat: Infinity,
-            repeatDelay: 1
-          }}
-        />
-      ))}
+      {[...Array(6)].map((_, i) => {
+        // Use deterministic values based on index to avoid hydration mismatch
+        const xPos = (i * 67 - 100) % 200;
+        const yPos = (i * 43 - 100) % 200;
+        const xTarget = ((i + 3) * 71 - 100) % 200;
+        const yTarget = ((i + 2) * 53 - 100) % 200;
+        
+        return (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-[#8a08fc] rounded-full"
+            initial={{ 
+              x: xPos,
+              y: yPos,
+              opacity: 0 
+            }}
+            animate={{
+              x: [xPos, xTarget],
+              y: [yPos, yTarget],
+              opacity: [0, 1, 1, 0]
+            }}
+            transition={{
+              duration: 4,
+              delay: i * 0.5,
+              repeat: Infinity,
+              repeatDelay: 1
+            }}
+          />
+        );
+      })}
     </div>
   )
 }

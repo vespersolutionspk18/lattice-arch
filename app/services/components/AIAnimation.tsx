@@ -8,7 +8,7 @@ const AIAnimation = () => {
     <div className="relative w-full h-full min-h-[400px] flex items-center justify-center">
       {/* Central AI Brain */}
       <motion.div
-        className="relative w-48 h-48 rounded-full bg-gradient-to-br from-purple-600 to-purple-900 flex items-center justify-center"
+        className="relative w-48 h-48 rounded-full bg-gradient-to-br from-[#8a08fc] to-[#8a08fc] flex items-center justify-center"
         animate={{
           boxShadow: [
             "0 0 20px rgba(147, 51, 234, 0.5)",
@@ -27,7 +27,7 @@ const AIAnimation = () => {
         {[...Array(8)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 bg-gradient-to-r from-purple-400 to-transparent"
+            className="absolute w-1 bg-gradient-to-r from-[#8a08fc] to-transparent"
             style={{
               height: '100px',
               top: '50%',
@@ -52,7 +52,7 @@ const AIAnimation = () => {
       {[...Array(6)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-8 h-8 rounded-full bg-purple-500"
+          className="absolute w-8 h-8 rounded-full bg-[#8a08fc]"
           style={{
             top: '50%',
             left: '50%',
@@ -74,7 +74,7 @@ const AIAnimation = () => {
           }}
         >
           <motion.div
-            className="w-full h-full rounded-full bg-purple-400"
+            className="w-full h-full rounded-full bg-[#8a08fc]"
             animate={{
               scale: [1, 1.2, 1],
               opacity: [0.7, 1, 0.7]
@@ -92,7 +92,7 @@ const AIAnimation = () => {
       {[...Array(4)].map((_, i) => (
         <motion.div
           key={`stream-${i}`}
-          className="absolute w-2 h-2 rounded-full bg-purple-300"
+          className="absolute w-2 h-2 rounded-full bg-[#8a08fc]"
           initial={{
             x: -150,
             y: (i - 2) * 30,
