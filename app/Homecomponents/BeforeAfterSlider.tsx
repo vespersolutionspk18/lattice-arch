@@ -6,16 +6,37 @@ interface BeforeAfterSliderProps {
   beforeImage: string
   afterImage: string
   alt: string
+  isActive?: boolean
+  onActivate?: () => void
 }
 
-const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImage, afterImage, alt }) => {
+const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImage, afterImage, alt, isActive = false, onActivate }) => {
   const [sliderPosition, setSliderPosition] = useState(50)
   const [isDragging, setIsDragging] = useState(false)
+  const [hasInteracted, setHasInteracted] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (!containerRef.current) return
+    
+    const rect = containerRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const percentage = (x / rect.width) * 100
+    setSliderPosition(Math.min(Math.max(percentage, 0), 100))
+    setHasInteracted(true)
+    
+    if (onActivate) {
+      onActivate()
+    }
+  }
 
   const handleMouseDown = (e: React.MouseEvent) => {
     e.preventDefault()
     setIsDragging(true)
+    setHasInteracted(true)
+    if (onActivate) {
+      onActivate()
+    }
   }
 
   const handleMouseUp = () => {
@@ -23,12 +44,14 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImage, afte
   }
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !containerRef.current) return
-
-    const rect = containerRef.current.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const percentage = (x / rect.width) * 100
-    setSliderPosition(Math.min(Math.max(percentage, 0), 100))
+    if (!containerRef.current) return
+    
+    if (isActive || isDragging) {
+      const rect = containerRef.current.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const percentage = (x / rect.width) * 100
+      setSliderPosition(Math.min(Math.max(percentage, 0), 100))
+    }
   }
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -40,12 +63,14 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImage, afte
   }
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging || !containerRef.current) return
-
-    const rect = containerRef.current.getBoundingClientRect()
-    const x = e.touches[0].clientX - rect.left
-    const percentage = (x / rect.width) * 100
-    setSliderPosition(Math.min(Math.max(percentage, 0), 100))
+    if (!containerRef.current) return
+    
+    if (isActive || isDragging) {
+      const rect = containerRef.current.getBoundingClientRect()
+      const x = e.touches[0].clientX - rect.left
+      const percentage = (x / rect.width) * 100
+      setSliderPosition(Math.min(Math.max(percentage, 0), 100))
+    }
   }
 
   useEffect(() => {
@@ -63,10 +88,17 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImage, afte
     }
   }, [isDragging])
 
+  useEffect(() => {
+    if (!isActive && !hasInteracted) {
+      setSliderPosition(50)
+    }
+  }, [isActive, hasInteracted])
+
   return (
     <div 
       ref={containerRef}
       className="relative w-full h-full overflow-hidden cursor-col-resize select-none"
+      onClick={handleClick}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
@@ -102,7 +134,7 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImage, afte
 
       {/* Slider Line and Handle */}
       <div 
-        className="absolute top-0 bottom-0 w-1 bg-white shadow-lg"
+        className={`absolute top-0 bottom-0 w-1 bg-white shadow-lg transition-opacity duration-300 ${isActive || hasInteracted ? 'opacity-100' : 'opacity-0'}`}
         style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
       >
         {/* Slider Handle */}

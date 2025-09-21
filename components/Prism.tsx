@@ -187,13 +187,27 @@ const Prism: React.FC<PrismProps> = ({
           d = 0.1 + 0.2 * abs(sdPyramidUpInv(q));
           z -= d;
           if (d < 5.0) {
-            o += (sin((p.y + z) * cf + vec4(0.0, 1.0, 2.0, 3.0)) + 1.0) / d;
+            // Shift the sine phases to favor purple hues
+            vec4 colorPhase = vec4(5.5, 4.2, 0.8, 2.1); // Adjusted for purple dominance
+            o += (sin((p.y + z) * cf + colorPhase) + 1.0) / d;
           }
         }
 
         o = tanh4(o * o * (uGlow * uBloom) / 1e5);
 
         vec3 col = o.rgb;
+        
+        // Suppress green channel but keep some
+        col.g *= 0.4; // Reduce green to 40% of its original value
+        
+        // Bias towards purple #4c1d95 (0.298, 0.114, 0.584) with more red
+        vec3 targetPurple = vec3(0.4, 0.15, 0.55); // Added more red, slightly less blue
+        col = mix(col, targetPurple, 0.35); // Reduced mix for less purple dominance
+        
+        // Add white to brighten
+        vec3 white = vec3(1.0, 1.0, 1.0);
+        col = mix(col, white, 0.15); // Mix 15% white for brightness
+        
         float n = rand(gl_FragCoord.xy + vec2(iTime));
         col += (n - 0.5) * uNoise;
         col = clamp(col, 0.0, 1.0);
@@ -472,7 +486,7 @@ const Prism: React.FC<PrismProps> = ({
     suspendWhenOffscreen
   ]);
 
-  return <div className="w-full h-full relative" ref={containerRef} />;
+  return <div className="w-full h-full " ref={containerRef} />;
 };
 
 export default Prism;

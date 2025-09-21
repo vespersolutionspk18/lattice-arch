@@ -1,8 +1,9 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import BeforeAfterSlider from './BeforeAfterSlider'
 
 const ProjectsMarquee = () => {
+  const [activeCardIndex, setActiveCardIndex] = useState<number | null>(null)
   
   // Project data with before/after images
   const projectData = [
@@ -48,15 +49,16 @@ const ProjectsMarquee = () => {
     }
   ]
 
-  // Duplicate array for seamless loop
-  const duplicatedProjects = [...projectData, ...projectData]
+  // Triple the array for seamless infinite loop
+  const duplicatedProjects = [...projectData, ...projectData, ...projectData]
 
   return (
     <div className="w-full overflow-hidden mt-8 md:mt-12 lg:mt-20 py-4 md:py-6 lg:py-8">
       <style jsx>{`
         .marquee-container {
           display: flex;
-          animation: marquee 8s linear infinite;
+          animation: marquee 60s linear infinite;
+          width: fit-content;
         }
         
         .marquee-container:hover {
@@ -65,10 +67,10 @@ const ProjectsMarquee = () => {
         
         @keyframes marquee {
           0% {
-            transform: translateX(0);
+            transform: translateX(0%);
           }
           100% {
-            transform: translateX(-50%);
+            transform: translateX(-33.333%);
           }
         }
         
@@ -95,6 +97,8 @@ const ProjectsMarquee = () => {
             <div
               key={`${index}`}
               className="image-container relative flex-shrink-0 h-48 w-80 md:h-64 md:w-96 lg:h-80 lg:w-[480px] rounded-lg md:rounded-xl overflow-hidden bg-gray-200 group"
+              onMouseEnter={() => setActiveCardIndex(index)}
+              onMouseLeave={() => setActiveCardIndex(null)}
             >
               {/* Before/After Slider - Always Visible */}
               <div className="slider-overlay">
@@ -102,6 +106,8 @@ const ProjectsMarquee = () => {
                   beforeImage={project.before}
                   afterImage={project.after}
                   alt={project.name}
+                  isActive={activeCardIndex === index}
+                  onActivate={() => setActiveCardIndex(index)}
                 />
               </div>
             </div>

@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { motion, Variants, AnimatePresence } from 'motion/react'
 import Button from './Button'
 import { HiMenuAlt3, HiX } from 'react-icons/hi'
+import LogoTest from './LogoTest'
 
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: -20 },
@@ -47,40 +48,43 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <motion.div 
-      className="px-12 w-full absolute top-0"
+   <div className="p-3 absolute w-full z-[999999]">
+     <motion.div 
+      className=" w-full rounded-full    "
       initial="hidden"
       animate="visible"
       variants={containerVariants}
     >
       <div className="flex flex-row px-2 md:px-5 py-3 items-center justify-between">
         <motion.div 
-          className="font-light text-2xl md:text-3xl text-white"
+          className="font-light flex flex-row items-center justify-center gap-3 text-2xl md:text-3xl text-white"
           variants={itemVariants}
           whileHover={{ scale: 1.05 }}
         >
-            Lattice
+          <LogoTest/>
+           <p className="tracking-tighter font-normal"> Lattice</p>
         </motion.div>
         
         {/* Desktop Navigation */}
         <motion.div 
-          className="hidden md:flex flex-row gap-4 lg:gap-8 text-white/85 text-lg lg:text-xl font-light"
+          className="hidden md:flex flex-row gap-4 lg:gap-8 text-white/85 text-lg  font-light bg-purple-400/10 border-1 border-purple-400/16 backdrop-blur-4xl px-4 py-1 rounded-full"
           variants={containerVariants}
         >
             {['Home', 'Services', 'About', 'Projects'].map((item) => (
-              <motion.p
+              <motion.div
                 key={item}
                 variants={navItemVariants}
                 whileHover={{ 
-                  scale: 1.1,
-                  color: '#a8a29e',
+                  scale: 1.05,
                   transition: { duration: 0.2 }
                 }}
                 whileTap={{ scale: 0.95 }}
                 style={{ cursor: 'pointer' }}
+                className="font-semibold "
+                
               >
                 {item}
-              </motion.p>
+              </motion.div>
             ))}
         </motion.div>
         
@@ -121,17 +125,19 @@ const Header = () => {
           >
             <div className="flex flex-col gap-6 px-6 pt-20">
               {['Home', 'Services', 'About', 'Projects'].map((item, index) => (
-                <motion.p
+                <motion.div
                   key={item}
-                  className="text-white/85 text-xl font-light"
+                  className="text-white/85 text-xl font-light flex items-center px-3 py-2 rounded-md hover:bg-white/10 hover:text-white transition-all duration-200"
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
                   onClick={() => setIsMenuOpen(false)}
                   style={{ cursor: 'pointer' }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   {item}
-                </motion.p>
+                </motion.div>
               ))}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -145,6 +151,7 @@ const Header = () => {
         )}
       </AnimatePresence>
     </motion.div>
+   </div>
   )
 }
 

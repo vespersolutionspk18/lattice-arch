@@ -8,18 +8,24 @@ import Faq from "./Homecomponents/Faq";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 import ProjectsMarquee from "./Homecomponents/ProjectsMarquee";
+import Comparison from "./Homecomponents/Comparison";
+
+
 
 export default function Home() {
   return (
     <>
     <Header />
     <Hero />
-    <ProjectsMarquee />
 
+    <ProjectsMarquee />
+    <Comparison />
     <OurServices />
+
     <Testimonials />
     <Faq />
     <CTA />
+    
     <Footer />
     </>
   );
