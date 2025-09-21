@@ -48,14 +48,14 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-   <div className="p-3 absolute w-full z-[999999]">
+   <div className="p-3 absolute w-full  z-[999999]">
      <motion.div 
       className=" w-full rounded-full    "
       initial="hidden"
       animate="visible"
       variants={containerVariants}
     >
-      <div className="flex flex-row px-2 md:px-5 py-3 items-center justify-between">
+      <div className="flex flex-row px-2 md:px-3 py-1.5 bg-purple-400/10 border-1 border-purple-400/16 backdrop-blur-4xl rounded-full items-center justify-between">
         <motion.div 
           className="font-light flex flex-row items-center justify-center gap-3 text-2xl md:text-3xl text-white"
           variants={itemVariants}
@@ -67,10 +67,10 @@ const Header = () => {
         
         {/* Desktop Navigation */}
         <motion.div 
-          className="hidden md:flex flex-row gap-4 lg:gap-8 text-white/85 text-lg  font-light bg-purple-400/10 border-1 border-purple-400/16 backdrop-blur-4xl px-4 py-1 rounded-full"
+          className="hidden md:flex flex-row gap-4 lg:gap-8 text-white/85 text-lg  font-light "
           variants={containerVariants}
         >
-            {['Home', 'Services', 'About', 'Projects'].map((item) => (
+            {['Home', 'Services', 'Pricing', 'About', 'Projects', 'Contact'].map((item) => (
               <motion.div
                 key={item}
                 variants={navItemVariants}

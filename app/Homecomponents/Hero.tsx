@@ -69,7 +69,7 @@ const Hero = () => {
           variants={containerVariants}
         >
           <motion.div
-            className="w-fit rounded-full bg-white/7 backdrop-blur-xl flex items-center justify-center py-1 px-3 text-sm text-white"
+            className="w-fit rounded-full bg-white/[0.40] backdrop-blur-xl flex items-center justify-center py-1 px-3 text-sm text-white"
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
