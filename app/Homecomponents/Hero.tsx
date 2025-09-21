@@ -43,7 +43,7 @@ const containerVariants: Variants = {
 
 const Hero = () => {
   return (
-    <div className="relative w-full pt-12">
+    <div className="relative w-full pt-24 md:pt-12">
       <div style={{ width: '100%', height: '800px', position: 'absolute', top: 0, left: 0, zIndex: 0 }} id="prism here">
         <Prism
           animationType="rotate"

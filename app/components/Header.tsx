@@ -55,7 +55,7 @@ const Header = () => {
       animate="visible"
       variants={containerVariants}
     >
-      <div className="flex flex-row px-2 md:px-3 py-1.5 bg-purple-400/10 border-1 border-purple-400/16 backdrop-blur-4xl rounded-full items-center justify-between">
+      <div className="flex flex-row px-2 md:px-3 py-1.5 bg-purple-400/18 border-1 border-purple-400/16 backdrop-blur-4xl rounded-full items-center justify-between">
         <motion.div 
           className="font-light flex flex-row items-center justify-center gap-3 text-2xl md:text-3xl text-white"
           variants={itemVariants}
@@ -81,7 +81,10 @@ const Header = () => {
                 whileTap={{ scale: 0.95 }}
                 style={{ cursor: 'pointer' }}
                 className="font-semibold "
-                
+                onClick={() => {
+                  const route = item === 'Home' ? '/' : `/${item.toLowerCase()}`
+                  window.location.href = route
+                }}
               >
                 {item}
               </motion.div>
@@ -124,14 +127,18 @@ const Header = () => {
             transition={{ type: 'tween', duration: 0.3 }}
           >
             <div className="flex flex-col gap-6 px-6 pt-20">
-              {['Home', 'Services', 'About', 'Projects'].map((item, index) => (
+              {['Home', 'Services', 'Pricing', 'About', 'Projects', 'Contact'].map((item, index) => (
                 <motion.div
                   key={item}
                   className="text-white/85 text-xl font-light flex items-center px-3 py-2 rounded-md hover:bg-white/10 hover:text-white transition-all duration-200"
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    setIsMenuOpen(false)
+                    const route = item === 'Home' ? '/' : `/${item.toLowerCase()}`
+                    window.location.href = route
+                  }}
                   style={{ cursor: 'pointer' }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}

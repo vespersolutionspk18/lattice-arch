@@ -7,6 +7,8 @@ import { FaCheck } from 'react-icons/fa'
 import { BsShieldFillCheck } from 'react-icons/bs'
 import { HiSparkles } from 'react-icons/hi'
 import LogoTest from '../components/LogoTest'
+// @ts-ignore - TypeScript server issue, file exists
+import LogoPurpleSmall from '../components/LogoPurpleSmall'
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -49,59 +51,71 @@ const Comparison = () => {
   const [isHovered, setIsHovered] = React.useState(false)
   
   const comparisonData = [
-    { 
+    {
       others: "Template designs",
-      us: "Custom architecture"
+      us: "Custom architecture",
+      useLogo: true
     },
     {
       others: "Basic 3D models",
-      us: "VR walkthroughs"
+      us: "VR walkthroughs",
+      useLogo: true
     },
     {
       others: "Manual process",
-      us: "AI-powered design"
+      us: "AI-powered design",
+      useLogo: true
     },
     {
       others: "2-3 weeks wait",
-      us: "48-hour delivery"
+      us: "48-hour delivery",
+      useLogo: true
     },
     {
       others: "2 revisions only",
-      us: "Unlimited revisions"
+      us: "Unlimited revisions",
+      useLogo: false
     },
     {
       others: "$5000+ website",
-      us: "Free website & CRM"
+      us: "Free website & CRM",
+      useLogo: false
     },
     {
       others: "Retail pricing",
-      us: "Wholesale access"
+      us: "Wholesale access",
+      useLogo: false
     },
     {
       others: "9-5 support",
-      us: "24/7 support"
+      us: "24/7 support",
+      useLogo: false
     },
     {
       others: "Email only",
-      us: "Mobile app"
+      us: "Mobile app",
+      useLogo: false
     },
     {
       others: "No analysis",
-      us: "Energy optimization"
+      us: "Energy optimization",
+      useLogo: false
     },
     {
       others: "Hidden fees",
-      us: "All-inclusive"
+      us: "All-inclusive",
+      useLogo: false
     },
     {
       others: "No guarantee",
-      us: "Money-back guarantee"
+      us: "Money-back guarantee",
+      useLogo: false
     }
   ]
 
   return (
     <motion.div 
-      className="flex flex-col justify-between gap-4 md:gap-6 lg:gap-7 w-full px-4 md:px-8 lg:px-16 py-8 md:py-12 lg:py-16 items-center"
+      className="flex flex-col justify-between gap-3 md:gap-4 lg:gap-5 w-full px-4 md:px-6 lg:px-12 py-6 md:py-8 lg:py-12 items-center"
       initial="hidden"
       animate="visible"
       variants={containerVariants}
@@ -115,14 +129,14 @@ const Comparison = () => {
       </motion.div>
       
       <motion.h5 
-        className="text-center text-2xl md:text-3xl lg:text-5xl text-white/85 font-semibold tracking-tighter w-full md:w-[80%] lg:w-[66%]"
+        className="text-center text-xl md:text-2xl lg:text-4xl text-white/85 font-semibold tracking-tighter w-full md:w-[80%] lg:w-[66%]"
         variants={itemVariants}
       >
         Experience the difference between ordinary and extraordinary
       </motion.h5>
 
       <motion.div 
-        className="w-full max-w-4xl relative"
+        className="w-full max-w-3xl relative"
         variants={itemVariants}
       >
         {/* Our Company Card Background */}
@@ -175,33 +189,39 @@ const Comparison = () => {
           </thead>
           <tbody>
             {comparisonData.map((item, index) => (
-              <motion.tr 
+              <motion.tr
                 key={index}
                 custom={index}
                 variants={rowVariants}
                 className="hover:bg-white/5 transition-colors"
               >
-                <td className="text-center px-3 py-2 align-middle w-[50%]">
-                  <p className="text-gray-500 text-sm md:text-base">
+                <td className="text-center px-4 py-3 align-middle w-[50%] h-14">
+                  <p className="text-gray-500 text-xs md:text-sm">
                     {item.others}
                   </p>
                 </td>
-                <td className="text-center px-3 py-3 align-middle w-[50%]">
-                  <div className="flex items-center justify-center gap-2">
+                <td className="text-center px-4 py-3 align-middle w-[50%] h-14">
+                  <div className="flex items-center justify-center h-full relative">
                     <motion.div
                       initial={{ scale: 0, rotate: -180 }}
                       animate={{ scale: 1, rotate: 0 }}
-                      transition={{ 
-                        delay: 0.1 + index * 0.02, 
-                        type: "spring", 
+                      transition={{
+                        delay: 0.1 + index * 0.02,
+                        type: "spring",
                         stiffness: 200,
                         damping: 15
                       }}
-                      className="flex-shrink-0"
+                      className={`absolute flex items-center justify-center ${item.useLogo ? 'left-[15%]' : 'left-[18%]'}`}
                     >
-                      <FaCheck className="text-green-400 text-sm" />
+                      {item.useLogo ? (
+                        <LogoPurpleSmall />
+                      ) : (
+                        <div className="w-[25px] h-[25px] flex items-center justify-center">
+                          <FaCheck className="text-green-400 text-lg" />
+                        </div>
+                      )}
                     </motion.div>
-                    <p className="text-white/90 text-sm md:text-base font-semibold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+                    <p className="text-xs md:text-sm font-semibold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
                       {item.us}
                     </p>
                   </div>

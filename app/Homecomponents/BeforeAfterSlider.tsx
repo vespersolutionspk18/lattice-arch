@@ -133,8 +133,8 @@ const BeforeAfterSlider: React.FC<BeforeAfterSliderProps> = ({ beforeImage, afte
       </div>
 
       {/* Slider Line and Handle */}
-      <div 
-        className={`absolute top-0 bottom-0 w-1 bg-white shadow-lg transition-opacity duration-300 ${isActive || hasInteracted ? 'opacity-100' : 'opacity-0'}`}
+      <div
+        className="absolute top-0 bottom-0 w-1 bg-white shadow-lg opacity-100"
         style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
       >
         {/* Slider Handle */}
