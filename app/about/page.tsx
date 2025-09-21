@@ -13,14 +13,10 @@ import {
   FaProjectDiagram, 
   FaClock,
   FaHandshake,
-  FaBrain,
   FaRocket,
   FaGlobe
 } from 'react-icons/fa'
 import { 
-  MdArchitecture, 
-  MdDesignServices, 
-  MdEngineering,
   MdVerified,
   MdTrendingUp,
   MdSecurity
@@ -118,33 +114,6 @@ export default function AboutPage() {
       icon: MdSecurity,
       title: "Trust & Reliability",
       description: "Transparent pricing, on-time delivery, and unwavering commitment to your success."
-    }
-  ]
-
-  const team = [
-    {
-      name: "Alexander Chen",
-      role: "Chief Architect",
-      icon: MdArchitecture,
-      bio: "20+ years crafting innovative architectural solutions"
-    },
-    {
-      name: "Sarah Martinez",
-      role: "Design Director",
-      icon: MdDesignServices,
-      bio: "Award-winning designer with a passion for modern aesthetics"
-    },
-    {
-      name: "David Kim",
-      role: "Engineering Lead",
-      icon: MdEngineering,
-      bio: "Structural expert ensuring safety meets beauty"
-    },
-    {
-      name: "Emily Johnson",
-      role: "AI Innovation Head",
-      icon: FaBrain,
-      bio: "Pioneering AI-driven design optimization"
     }
   ]
 
